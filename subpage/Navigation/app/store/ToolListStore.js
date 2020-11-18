@@ -1,6 +1,7 @@
 /**
  * Created by Administrator on 2014/6/28.
  */
+// 当前单元的数据存储部分
 Ext.define('NavigationApp.store.ToolListStore', {
     extend: 'Ext.data.ArrayStore',
     requires: [
