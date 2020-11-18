@@ -1,0 +1,34 @@
+#navication {
+
+
+    /*background-color: #E3F8FF;*/
+    background-image: url(../ouricons/background.png) ;
+    position: relative;
+    display: block;
+    height: auto;
+}
+
+#navication div.toolList img {
+    width: 100px;
+    height: 100px;
+}
+
+#navication div.toolList {
+    float:left;
+    width:350px;
+    height:105px;
+    margin-top: 50px;
+    margin-left:100px;
+    background:#d3d3d3;
+    border:#85c9fa 1px solid;
+}
+#navication  div.toolList {
+    border-color: #d3d3d3;
+}
+
+/*#navication div.toolList-hover {*/
+    /*background:#bce1fc;*/
+    /*border:#85c9fa 1px solid;*/
+/*}*/
+
+

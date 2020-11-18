@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../../../libs/threeJS/three.js"></script>
+
+<script type="text/javascript" src="../../../js/StructDesign/Matrixs.js"></script>
+<script type="text/javascript" src="../../../jsunit/app/jsUnitCore.js"></script>
+<script type="text/javascript">
+
+    function matrixEqual(a, b) {
+        for (var i = 0; i < 16; i++)
+            if (Math.abs(a[i] - b[i]) > 0.000001)
+                return false;
+        return true;
+    }
+
+    function testAxisXRotationMatrix() {
+        var result = Matrixs.axisXRotationMatrix(0);
+        var ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+
+        result = Matrixs.axisXRotationMatrix(Math.PI);
+        ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, -1, 0, 0,
+                0, 0, -1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+    }
+
+    function testAxisYRotationMatrix() {
+        var result = Matrixs.axisYRotationMatrix(0);
+        var ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+
+        result = Matrixs.axisYRotationMatrix(Math.PI);
+        ans = new THREE.Matrix4();
+        ans.set(
+                -1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, -1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+    }
+
+    function testAxisZRotationMatrix() {
+        var result = Matrixs.axisZRotationMatrix(0);
+        var ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+
+        result = Matrixs.axisZRotationMatrix(Math.PI);
+        ans = new THREE.Matrix4();
+        ans.set(
+                -1, 0, 0, 0,
+                0, -1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+    }
+
+    function testVectorRotation() {
+        var result = Matrixs.vectorRotation(new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 0, -1));
+        var ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, 0, -1, 0,
+                0, 1, 0, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+
+        result = Matrixs.vectorRotation(new THREE.Vector3(0, 1, 0), new THREE.Vector3(1, 0, 0));
+        ans = new THREE.Matrix4();
+        ans.set(
+                0, -1, 0, 0,
+                1, 0, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        );
+        assertTrue(matrixEqual(result, ans));
+    }
+</script>
+<body>
+
+</body>
+</html>

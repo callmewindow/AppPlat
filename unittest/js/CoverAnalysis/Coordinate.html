@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../../../libs/threeJS/three.js"></script>
+
+<script type="text/javascript" src="../../../js/CoverAnalysis/Matrix.js"></script>
+<script type="text/javascript" src="../../../js/CoverAnalysis/Coordinate.js"></script>
+
+<script type="text/javascript" src="../../../jsunit/app/jsUnitCore.js"></script>
+
+<script type="text/javascript">
+    function testgetSensorVector(){
+        var centerid, echoTime, a, e, i, Om, om, theta, startTime, endTime, bh, arr, ix, iy, iz;
+        var result = Coordinate.getSensorVector(centerid, echoTime, a, e, i, Om, om, theta, startTime, endTime, bh, arr, ix, iy, iz);
+        var preResul = new Array();
+        assertObjectEquals(preResul, result);
+    }
+
+    function testcalculateOrbitAxis(){
+        var centerPosition = new THREE.Vector3(), satellitePosition = new THREE.Vector3(),
+                satelliteVelocity = new THREE.Vector3();
+        var result = Coordinate.calculateOrbitAxis(centerPosition, satellitePosition, satelliteVelocity);
+
+        var endX = new THREE.Vector3(), endY = new THREE.Vector3(), endZ = new THREE.Vector3();
+        var predictResult = new Array(endX, endY, endZ);
+        assertObjectEquals(predictResult, result);
+    }
+    function testorbitToEcliptic(){
+        var orbitx = new THREE.Vector3(), orbity = new THREE.Vector3(), orbitz = new THREE.Vector3();
+        var orbit = new Array(orbitx, orbity, orbitz);
+        var eclipticx = new THREE.Vector3(), eclipticy = new THREE.Vector3(), eclipticz = new THREE.Vector3();
+        var ecliptic = new Array(eclipticx, eclipticy, eclipticz);
+
+        var result = Coordinate.orbitToEcliptic(orbit, ecliptic);
+        var predictResult = new THREE.Matrix4();
+
+        assertObjectEquals(predictResult, result);
+    }
+</script>
+<body>
+
+</body>
+</html>

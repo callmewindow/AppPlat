@@ -1,0 +1,10 @@
+{
+    "success": true,
+    "interload": [
+        {"id":1, "name": "BatteryPack"},
+        {"id":2, "name": "Distributionbox"},
+        {"id":3, "name": "Magneticassemblylinebox"},
+        {"id":4, "name": "MomentumWheel"},
+        {"id":5, "name": "StarComputerServices"}
+    ]
+}

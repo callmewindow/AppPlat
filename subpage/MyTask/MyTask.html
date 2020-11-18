@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MyTaskApp</title>
+    <script src="../../libs/jquery/jquery-1.10.2.js"></script>
+    <script src="../../libs/ext/ext-all-dev.js"></script>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
+    <link rel="stylesheet" href="../../resources/css/icon-css.css"/>
+    <link rel="stylesheet" href="../../resources/iconsinuse/icon-css.css"/>
+    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+    <script src="../../js/StructDesign/StructDesign.js"></script>
+    <script src="../../js/StructDesign/Matrixs.js"></script>
+    <script src="../../js/StructDesign/Structure.js"></script>
+    <script src="../../js/StructDesign/SceneManage.js"></script>
+    <script src="../../js/StructDesign/StructManage.js"></script>
+    <script src="../../js/StructDesign/CooperationManage.js"></script>
+    <script src="../../js/StructDesign/StorageManage.js"></script>
+    <script src="../../js/Global/AppPlatConstant.js"></script>
+    <script type="text/javascript" src="app/MyTaskApp.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function(){
+            if(window.parent != window){
+                var height = 700;
+                var data = {
+                    "command":"height",
+                    "value":height
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+
+        function OnPostCommand(command) {
+            if(window.parent != window){
+                var data = {
+                    "command":command
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+
+
+//        Ext.Ajax.request({
+//            url:APC.APPPLAT_SERVICE_URL_PREFIX+"InterfaceManage/getMyTaskInfo.json",
+//            method: 'GET',
+//            params: {
+//                userId:'333bbbe18cd23317f008f333'
+//            },
+//            success: function (response) {
+//                console.log(response)
+//            }
+//        });
+
+    </script>
+
+
+
+</head>
+<body >
+</body>
+</html>

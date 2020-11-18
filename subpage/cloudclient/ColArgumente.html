@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<!-- Auto Generated with Sencha Architect -->
+<!-- Modifys to this file will be overwritten. -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AppPlat</title>
+
+    <script src="../../libs/jquery/jquery-1.10.2.js"></script>
+    <!--three.js载入-->
+    <script type="text/javascript">
+        function getValue(url, name) {
+            var reg = new RegExp('(\\?|&)' + name + '=([^&?]*)', 'i');
+            var arr = url.match(reg);
+            if (arr) {
+                return arr[2];
+            }
+            return null;
+        }
+        var signature = getValue(window.location.href, 'signature');
+        var userId = getValue(window.location.href, 'userId');
+        var account = getValue(window.location.href, 'account');
+        var domain = getValue(window.location.href, 'domain');
+        var permission = getValue(window.location.href, 'permission');
+        var name = getValue(window.location.href, 'name');
+        sessionStorage.setItem('signature',signature);
+        sessionStorage.setItem('userId',userId);
+        sessionStorage.setItem('account',account);
+        sessionStorage.setItem('domain',domain);
+        sessionStorage.setItem('permission',permission);
+        sessionStorage.setItem('name',name);
+
+        window.onload = function(){
+            if(window.parent != window){
+                var height = document.body.scrollHeight;
+                var data = {
+                    "command":"height",
+                    "value":height
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+    </script>
+
+
+    <script src="../../libs/ext/ext-all-dev.js"></script>
+    <script src="../../js/Global/AppPlatConstant.js"></script>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
+    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+
+
+    <link rel="stylesheet" href="../../resources/css/icon-css.css"/>
+    <script type="text/javascript" src="app/CloudClient.js"></script>
+
+
+</head>
+<body >
+</body>
+</html>

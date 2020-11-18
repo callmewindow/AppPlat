@@ -1,0 +1,42 @@
+#taskView {
+    background-image: url(../ouricons/background.png) ;
+    /*background-color: #232D38;*/
+    /*text-shadow: #fff 0 1px 0;*/
+    position: relative;
+    display: block;
+    height: auto;
+}
+
+#taskView div.out img {
+    width: 100px;
+    height: 100px
+}
+
+#taskView div.out {
+    float:left;
+    width:350px;
+    height:105px;
+    /*margin-left: 90px;*/
+    /*margin-top: 40px;*/
+    /*margin-bottom: 40px;*/
+
+}
+.content-panel-body {
+    background-color: #ccc;
+}
+
+#taskView div.task-hover {
+    background: rgba(0, 0, 0, 0.618);
+}
+
+#taskView div.out strong {
+    color:#ffffff;
+    font-family:"微软雅黑";
+    font-size:10px
+}
+
+#taskView div.out span {
+    color:#ffffff;
+    font-family:"微软雅黑";
+    font-size:10px
+}

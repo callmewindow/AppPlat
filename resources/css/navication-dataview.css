@@ -1,0 +1,27 @@
+#navication {
+    /*background-color: #E3F8FF;*/
+    background-image: url(../ouricons/background.png) ;
+    position: relative;
+    display: block;
+    height: auto;
+}
+
+#navication div.toolList img {
+    width: 80px;
+    height: 80px
+}
+
+#navication div.toolList {
+    float:left;
+    width:350px;
+    height:105px;
+    margin-top: 85px;
+    margin-left:100px;
+}
+
+#navication div.toolList-hover {
+    background: rgba(0, 0, 0, 0.618);
+    /*border:#85c9fa 1px solid;*/
+}
+
+

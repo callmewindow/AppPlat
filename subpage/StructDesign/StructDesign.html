@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<!-- Auto Generated with Sencha Architect -->
+<!-- Modifys to this file will be overwritten. -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>StructDesignApp</title>
+
+    <!--three.js载入-->
+    <script type="text/javascript">
+        window.onload = function(){
+            if(window.parent != window){
+                var height = 700;
+                var data = {
+                    "command":"height",
+                    "value":height
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+
+        function OnPostCommand(command) {
+            if(window.parent != window){
+                var data = {
+                    "command":command
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+    </script>
+    <script src="../../libs/threeJS/three.js"></script>
+    <script src="../../libs/threeJS/tween.min.js"></script>
+    <script src="../../libs/threeJS/TransformControls.js"></script>
+    <script src="../../libs/threeJS/MTLLoader.js"></script>
+    <script src="../../libs/threeJS/OBJMTLLoader.js"></script>
+    <script src="../../libs/threeJS/OrbitControls.js"></script>
+    <script src="../../libs/threeJS/GridHelper.js"></script>
+    <script src="../../libs/threeJS/BoxHelper.js"></script>
+    <script src="../../libs/ext/ext-all-dev.js"></script>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
+    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+
+    <script type="text/javascript" src="../../libs/sylvester-0-1-3/sylvester.js"></script>
+    <script type="text/javascript" src="../../libs/sylvester-0-1-3/sylvester.src.js"></script>
+    <script type="text/javascript" src="../../libs/math/math_extend.js"></script>
+    <script type="text/javascript" src="../../libs/keplerUniversal/keplerUniversal.js"></script>
+    <script type="text/javascript" src="../../libs/rvOrb/rv2orb.js"></script>
+    <script type="text/javascript" src="../../libs/rvOrb/orb2rv.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/r2r.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/calculateEndDate.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/earth.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/julian.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/jupiter.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/mars.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/mercury.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/moon.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/neptune.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/saturn.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/venus.js"></script>
+    <script type="text/javascript" src="../../libs/lp_ephem/uranus.js"></script>
+
+    <script src="../../js/Global/AppPlatConstant.js"></script>
+    <!--<link rel="stylesheet" href="../../resources/css/icon-css.css"/>-->
+
+    <script type="text/javascript" src="app/StructDesignApp.js"></script>
+    <link rel="stylesheet" href="../../resources/css/navication-dataview.css"/>
+    <link rel="stylesheet" href="../../resources/iconsinuse/icon-css.css"/>
+
+    <script src="../../js/StructDesign/CooperationManage.js"></script>
+    <script src="../../js/StructDesign/Matrixs.js"></script>
+    <script src="../../js/StructDesign/SceneManage.js"></script>
+    <script src="../../js/StructDesign/SceneMap.js"></script>
+    <script src="../../js/StructDesign/StorageManage.js"></script>
+    <script src="../../js/StructDesign/StructDesign.js"></script>
+    <script src="../../js/StructDesign/StructManage.js"></script>
+    <script src="../../js/StructDesign/Structure.js"></script>
+    <script src="../../js/StructDesign/WindowManage.js"></script>
+    <script type="text/javascript" src="../../js/Global/AppPlatFunction.js"></script>
+    <script>
+        var account = sessionStorage.getItem('account');
+        var name = sessionStorage.getItem('name');
+        var domain = sessionStorage.getItem('domain');
+        var ip = sessionStorage.getItem('userIp');
+        var dateTime = APF.getNowTime();
+        var service = APC.MODEL_ID_STRUCT_DESIGN;
+        var url = APC.BACKEND_URL +'/AppPlat/subpage/StructDesign/StructDesign.html';
+        var describe = '开展卫星结构与有效载荷布局设计研究，支持快速地形成卫星及有效载荷的安装布局。';
+
+        Ext.Ajax.request({
+            url:APC.APPPLAT_SERVICE_URL_PREFIX+"InterfaceManage/insertAccessInfo.json",
+            method: 'GET',
+            params: {
+                account: account,
+                name: name,
+                domain: domain,
+                ip: ip,
+                dateTime: dateTime,
+                service: service,
+                url:url,
+                describe:describe
+            },
+            success: function (response) {
+            },
+            failure:function(batch,options){
+            }
+        });
+
+    </script>
+
+</head>
+<body>
+</body>
+</html>

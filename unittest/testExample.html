@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../libs/threeJS/three.js"></script>
+
+<script type="text/javascript" src="../js/StructDesign/WindowManage.js"></script>
+<script type="text/javascript" src="../js/StructDesign/Matrixs.js"></script>
+<script type="text/javascript" src="../jsunit/app/jsUnitCore.js"></script>
+<script type="text/javascript">
+
+    function testAdd() {
+        var result = tadd(4, 2);
+        warn("result", result);
+        debug("result", result);
+        info("result", result);
+        assertEquals(6, result);
+    }
+
+    function testMinus() {
+        var result = tminus(4, 2);
+        assertEquals(3, result);
+    }
+
+    function testMultiply() {
+        var result = tmultiply(4, 2);
+        assertEquals(8, result);
+    }
+
+    function testDivide() {
+        var result = tdivide(4, 2);
+        assertEquals("4 divide 2 is 2", 2, result);
+    }
+
+    function testMatrixs() {
+        var result = Matrixs.axisXRotationMatrix(0);
+        var ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, 1, 0, 0,
+                0, 0, 1, 0,
+                0, 0, 0, 1
+        );
+        assertObjectEquals(result, ans);
+
+        result = Matrixs.axisXRotationMatrix(1);
+        ans = new THREE.Matrix4();
+        ans.set(
+                1, 0, 0, 0,
+                0, Math.cos(1), -Math.sin(1), 0,
+                0, Math.sin(1), Math.cos(1), 0,
+                0, 0, 0, 1
+        );
+        assertObjectEquals(result, ans);
+    }
+
+
+        function setUp(){
+            alert("setUp");
+        }
+
+        function tearDown(){
+            alert("tearDown");
+        }
+
+        function setUpPage(){
+            alert("setUpPage");
+            setUpPageStatus = "complete";
+        }
+</script>
+<body>
+<!--http://llying.iteye.com/blog/258605-->
+<!--http://www.jsunit.net/documentation/assertions/-->
+</body>
+</html>

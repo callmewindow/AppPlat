@@ -1,0 +1,99 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <style>
+        .content {
+            width: 1170px;
+            height: 100px;
+            background-color: #c3c3c3;
+            margin: 0 auto;
+        }
+
+        .frameContent {
+            width: 1170px;
+            margin: 0 auto
+        }
+    </style>
+    <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+    <script type="text/javascript">
+        var frameHeight = 0;
+//        document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
+        window.onload = function () {
+            //加随机数，模拟用户的随机登陆
+//            var src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=";
+//            src += randomString(24);
+//            src += "&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
+            var src1 = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=111bbbe18cd23317f008f111&account=nie&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=聂殿辉";
+            var src3 = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=333bbbe18cd23317f008f333&account=du&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=杜鹏宇";
+            var src4 = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
+            var randomNumber = Math.random();
+            if( randomNumber >= 0 && randomNumber < 0.3){
+                document.getElementById('subPage').src = src1 ;
+            }
+//            else if(randomNumber >= 0.25 && randomNumber < 0.5){
+//                document.getElementById('subPage').src = src2;
+//            }
+            else if(randomNumber >= 0.3 && randomNumber < 0.6){
+                document.getElementById('subPage').src = src3;
+            }
+            else if(randomNumber >= 0.6 && randomNumber <= 1){
+                document.getElementById('subPage').src = src4;
+            }
+            console.log(document.getElementById('subPage').src);
+        },
+//        randomString = function (len) {
+//                    len = len || 24;
+//                    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+//                    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+//                    var maxPos = $chars.length;
+//                    var pwd = '';
+//                    for (i = 0; i < len; i++) {
+//                        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+//                    }
+//                    return pwd;
+//                }
+        window.addEventListener("message", getMessage, false);
+        function getMessage(event) {
+            var data = JSON.parse(event.data);
+            if (data.command == "height") {
+                frameHeight = data.value + "px";
+                document.getElementById("subPage").style.height = frameHeight;
+            }
+            else if (data.command == "max") {
+
+                var div = document.getElementById("frameDiv");
+                div.style.position = "absolute";
+                div.style.top = 0;
+                div.style.left = 0;
+                div.style.zIndex = 999;
+                div.style.width = window.screen.availWidth;
+                div.style.height = window.screen.availHeight;
+            }
+
+            else if (data.command == "restore") {
+
+                var div = document.getElementById("frameDiv");
+                div.style.position = "relative";
+                div.style.width = "1170px";
+                div.style.height = frameHeight;
+
+            }
+            else {
+                alert(data)
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="content">
+    header
+</div>
+<div id="frameDiv" class="frameContent">
+    <iframe id="subPage" frameborder="no" border="0" marginwidth="0" marginheight="0" style="width:100%"></iframe>
+    <!--<iframe id="subPage" frameborder="no" border="0" marginwidth="0" marginheight="0" style="width:100%" src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩" ></iframe>-->
+
+</div>
+<div class="content">
+</div>
+</body>
+</html>

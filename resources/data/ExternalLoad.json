@@ -1,0 +1,13 @@
+{
+    "success": true,
+    "externalload": [
+        {"id":1,  "name": "Coarsesunsensor"},
+        {"id":2,  "name": "Datatransmissiontransmitter"},
+        {"id":3,  "name": "GPSantenna"},
+        {"id":4,  "name": "Omnidirectionalantenna"},
+        {"id":5,  "name": "Opticalcamera"},
+        {"id":6,  "name": "Solarpanels"},
+        {"id":7,  "name": "SpreadSpectrumTransceiver"},
+        {"id":8,  "name": "Startracker"}
+    ]
+}

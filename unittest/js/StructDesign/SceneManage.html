@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../../../libs/threeJS/three.js"></script>
+<script src="../../../libs/threeJS/OrbitControls.js"></script>
+
+<script type="text/javascript" src="../../../js/StructDesign/StructDesign.js"></script>
+<script type="text/javascript" src="../../../js/StructDesign/SceneManage.js"></script>
+<script type="text/javascript" src="../../../jsunit/app/jsUnitCore.js"></script>
+<script type="text/javascript">
+
+    function setUpPage(){
+        Struct.camera =  new THREE.PerspectiveCamera(45, 1, 1, 31000);
+        Struct.light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
+        Struct.sceneManage = new SceneManage();
+        Struct.sceneManage.orbitControl = new THREE.OrbitControls();
+        setUpPageStatus = "complete";
+    }
+
+    function testInitView() {
+        Struct.sceneManage.initView();
+        assertObjectEquals(Struct.camera.position, new THREE.Vector3(0, 300, 600));
+        assertObjectEquals(Struct.light.position, new THREE.Vector3(0, 300, 600));
+    }
+</script>
+<body>
+
+</body>
+</html>

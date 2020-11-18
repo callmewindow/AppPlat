@@ -1,0 +1,9 @@
+{
+    "success": true,
+    "platform": [
+        {"id":1,  "name": "Probe"},
+        {"id":2,  "name": "Returncapsule"},
+        {"id":3,  "name": "Spinstabilized"},
+        {"id":4,  "name": "Threeaxisstabilizedsatellite"}
+    ]
+}

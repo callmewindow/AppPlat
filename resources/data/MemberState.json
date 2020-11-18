@@ -1,0 +1,26 @@
+{
+    "success": true,
+    "memberstate": [
+        {"state": true,  "userName": "zy"},
+        {"state": true,  "userName": "wwt"},
+        {"state": true,  "userName": "zq"},
+        { "state": true,  "userName": "dpy"},
+        {"state": true,  "userName": "ndh"}
+    ]
+}
+/*
+
+ {"state": "user",  "userName": "zy"},
+ {"state": "user",  "userName": "wwt"},
+ {"state": "user",  "userName": "zq"},
+ {"state": "user",  "userName": "dpy"},
+ {"state": "user",  "userName": "ndh"}
+
+
+
+ {"id":1, "userName": "zy",  "state": true},
+ {"id":2, "userName": "wwt",  "state": true},
+ {"id":3, "userName": "zq",  "state": false},
+ {"id":4, "userName": "dpy",  "state": false},
+ {"id":5, "userName": "ndh",  "state": false}
+ * */

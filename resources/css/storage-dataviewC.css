@@ -1,0 +1,40 @@
+/*修改 by 杜鹏宇 on 2014/07/10*/
+
+
+#storageViewC {
+    /*background-color: #B0C4DE;*/
+    text-shadow: #fff 0 1px 0;
+    position: relative;
+    display: block;
+    height: auto;
+}
+
+#storageViewC div.out img {
+    width: 120px;
+    height: 120px
+}
+
+#storageViewC div.out {
+    float:left;
+    width:122px;
+    height:150px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+#storageViewC div.storage-hover {
+    background:#bce1fc;
+    border:#85c9fa 1px solid;
+}
+
+#storageViewC div.out strong {
+    color:#000000;
+    font-size:14px;
+    font-weight:bold
+}
+
+#storageViewC div.out span {
+    color:#000000;
+    font-size:14px;
+    font-weight:bold
+}

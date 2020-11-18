@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ToolListApp</title>
+    <script src="../../libs/ext/ext-all.js"></script>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
+    <link rel="stylesheet" href="../../resources/css/selectpage-dataview.css"/>
+    <script src="../../js/Global/AppPlatConstant.js"></script>
+    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="app/NavigationApp.js"></script>
+    <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+    <!--采用新浪的接口获取用户的接口-->
+    <script type="text/javascript">
+        function getValue(url, name) {
+            var reg = new RegExp('(\\?|&)' + name + '=([^&?]*)', 'i');
+            var arr = url.match(reg);
+            if (arr) {
+                return arr[2];
+            }
+            return null;
+        }
+        var signature = getValue(window.location.href, 'signature');
+        var userId = getValue(window.location.href, 'userId');
+        var account = getValue(window.location.href, 'account');
+        var domain = getValue(window.location.href, 'domain');
+        var permission = getValue(window.location.href, 'permission');
+        var name = getValue(window.location.href, 'name');
+        var modelId = getValue(window.location.href, 'modelId');
+        var taskId = getValue(window.location.href, 'taskId');
+
+        sessionStorage.setItem('signature',signature);
+        sessionStorage.setItem('userId',userId);
+        sessionStorage.setItem('account',account);
+        sessionStorage.setItem('domain',domain);
+        sessionStorage.setItem('permission',permission);
+        sessionStorage.setItem('name',name);
+        <!--sessionStorage.setItem('userIp',returnCitySN["cip"]);-->
+        sessionStorage.setItem('modelId',modelId);
+        sessionStorage.setItem(APC.SELECTED_TASK_ID,taskId);
+
+        Ext.Ajax.request({
+            url:APC.APPPLAT_SERVICE_URL_PREFIX+"InterfaceManage/verifyDigitalSignature.json",
+            method: 'GET',
+            params: {
+                signature: signature,
+                userId: userId,
+                account: account,
+                domain: domain,
+                permission: permission,
+                name: name
+            },
+            success: function (response) {
+                switch(modelId){
+                    case APC.MODEL_ID_ORBIT_DESIGN:
+                        window.location.href = "../../subpage/OrbitDesign/OrbitDesign.html"
+                        break;
+                    case APC.MODEL_ID_STRUCT_DESIGN:
+                        window.location.href = "../../subpage/StructDesign/StructDesign.html"
+                        break;
+                    case APC.MODEL_ID_COVER_ANALYSIS:
+                        window.location.href = "../../subpage/CoverAnalysis/CoverAnalysis.html"
+                        break;
+                    case APC.MODEL_ID_DATA_TRANS_ANALYSIS:
+                        window.location.href = "../../subpage/DataTransAnalysis/DataTransAnalysis.html"
+                        break;
+                    case APC.MODEL_ID_COLLABORATIVE_ARGUMENT:
+                        window.location.href = "../../subpage/CollaborativeArgumentation/ColArgumente.html"
+                        break;
+                    default:
+                        window.location.href = "../../subpage/Navigation/Navigation.html"
+                        break;
+                }
+
+//                var signatureResponse = Ext.JSON.decode(response.responseText);
+//                var isOk = signatureResponse.isOK  //布尔值，标识处理过程是否正常结束。
+//                var isValid = signatureResponse.isValid;//布尔值，数字签名是否有效。
+//                if (!isOk || !isValid) {
+//                    window.location.href = "../../subpage/LoginRemind/LoginRemind.html"
+//                }
+//                else{
+//                    if(modelId == null){
+//                        window.location.href = "../../subpage/Navigation/Navigation.html"
+//                    }else{
+//                        switch(modelId){
+//                            case APC.MODEL_ID_ORBIT_DESIGN:
+//                                window.location.href = "../../subpage/OrbitDesign/OrbitDesign.html"
+//                                break;
+//                            case APC.MODEL_ID_STRUCT_DESIGN:
+//                                window.location.href = "../../subpage/StructDesign/StructDesign.html"
+//                                break;
+//                            case APC.MODEL_ID_COVER_ANALYSIS:
+//                                window.location.href = "../../subpage/CoverAnalysis/CoverAnalysis.html"
+//                                break;
+//                            case APC.MODEL_ID_DATA_TRANS_ANALYSIS:
+//                                window.location.href = "../../subpage/DataTransAnalysis/DataTransAnalysis.html"
+//                                break;
+//                            case APC.MODEL_ID_COLLABORATIVE_ARGUMENT:
+//                                window.location.href = "../../subpage/CollaborativeArgumentation/ColArgumente.html"
+//                                break;
+//                            default:
+//                                window.location.href = "../../subpage/Navigation/Navigation.html"
+//                                break;
+//                        }
+//                    }
+//                }
+            },
+            failure:function(batch,options){
+                window.location.href = "../../subpage/LoginRemind/LoginRemind.html"
+            }
+        });
+
+        window.onload = function () {
+            if (window.parent != window) {
+                var height = 600;
+                var data = {
+                    "command": "height",
+                    "value": height
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

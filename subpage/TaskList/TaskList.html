@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="../../js/Global/AppPlatConstant.js"></script>
+    <title>TaskListApp</title>
+    <script src="../../libs/ext/ext-all-dev.js"></script>
+    <link rel="stylesheet" href="../../resources/css/icon-css.css"/>
+    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+    <script type="text/javascript">
+        window.onload = function(){
+            if(window.parent != window){
+                var height = 600;
+                var data = {
+                    "command":"height",
+                    "value":height
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+        //
+        //        function OnPostCommand(command) {
+        //            if(window.parent != window){
+        //                var data = {
+        //                    "command":command
+        //                };
+        //                window.parent.postMessage(JSON.stringify(data), '*');
+        //            }
+        //        }
+
+    </script>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
+    <link rel="stylesheet" type="text/css" href="../../libs/ext/shared/example.css" />
+    <link rel="stylesheet" href="../../resources/css/animated-dataview.css"/>
+    <script type="text/javascript" src="app/TaskListApp.js"></script>
+    <script type="text/javascript" src="../../js/Global/AppPlatFunction.js"></script>
+    <script>
+        var account = sessionStorage.getItem('account');
+        var name = sessionStorage.getItem('name');
+        var domain = sessionStorage.getItem('domain');
+        var ip = sessionStorage.getItem('userIp');
+        var dateTime = APF.getNowTime();
+        var service = APC.MODEL_ID_COLLABORATIVE_ARGUMENT;
+        var url = APC.BACKEND_URL +'/AppPlat/subpage/CollaborativeArgumentation/ColArgumente.html';
+        var describe = '空间科学任务论证支持服务","支持6-10个科学家组协同论证，支持项目的用户管理、数据管理、流程管理和工具调用。';
+        Ext.Ajax.request({
+            url:APC.APPPLAT_SERVICE_URL_PREFIX+"InterfaceManage/insertAccessInfo.json",
+            method: 'GET',
+            params: {
+                account: account,
+                name: name,
+                domain: domain,
+                ip: ip,
+                dateTime: dateTime,
+                service: service,
+                url:url,
+                describe:describe
+            },
+            success: function (response) {
+            },
+            failure:function(batch,options){
+            }
+        });
+    </script>
+</head>
+<body >
+</body>
+</html>

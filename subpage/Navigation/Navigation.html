@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>ToolListApp</title>
+    <script src="../../libs/ext/ext-all.js"></script>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
+    <link rel="stylesheet" href="../../resources/css/navication-dataview.css"/>
+    <script src="../../js/Global/AppPlatConstant.js"></script>
+    <script type="text/javascript" src="app/NavigationApp.js"></script>
+    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+    <!--function getValue(url, name) {-->
+            <!--var reg = new RegExp('(\\?|&)' + name + '=([^&?]*)', 'i');-->
+            <!--var arr = url.match(reg);-->
+            <!--if (arr) {-->
+                <!--return arr[2];-->
+            <!--}-->
+            <!--return null;-->
+        <!--}-->
+        <!--var signature = getValue(window.location.href, 'signature');-->
+        <!--var userId = getValue(window.location.href, 'userId');-->
+        <!--var account = getValue(window.location.href, 'account');-->
+        <!--var domain = getValue(window.location.href, 'domain');-->
+        <!--var permission = getValue(window.location.href, 'permission');-->
+        <!--var name = getValue(window.location.href, 'name');-->
+        <!--sessionStorage.setItem('signature',signature);-->
+        <!--sessionStorage.setItem('userId',userId);-->
+        <!--sessionStorage.setItem('account',account);-->
+        <!--sessionStorage.setItem('domain',domain);-->
+        <!--sessionStorage.setItem('permission',permission);-->
+        <!--sessionStorage.setItem('name',name);-->
+        <!--Ext.Ajax.request({-->
+            <!--url:APC.APPPLAT_SERVICE_URL_PREFIX+"InterfaceManage/verifyDigitalSignature.json",-->
+            <!--method: 'GET',-->
+            <!--params: {-->
+                <!--signature: signature,-->
+                <!--userId: userId,-->
+                <!--account: account,-->
+                <!--domain: domain,-->
+                <!--permission: permission,-->
+                <!--name: name-->
+            <!--},-->
+            <!--success: function (response) {-->
+                <!--var signatureResponse = Ext.JSON.decode(response.responseText);-->
+                <!--var isOk = signatureResponse.isOK  //布尔值，标识处理过程是否正常结束。-->
+                <!--var isValid = signatureResponse.isValid;//布尔值，数字签名是否有效。-->
+                <!--if (!isOk || !isValid) {-->
+                    <!--window.location.href = "../../subpage/LoginRemind/LoginRemind.html"-->
+                <!--}-->
+                <!--else{}-->
+            <!--},-->
+            <!--failure:function(batch,options){-->
+                <!--window.location.href = "../../subpage/LoginRemind/LoginRemind.html"-->
+            <!--}-->
+        <!--});-->
+    <script type="text/javascript">
+        window.onload = function () {
+            if (window.parent != window) {
+                var height = 600;
+                var data = {
+                    "command": "height",
+                    "value": height
+                };
+                window.parent.postMessage(JSON.stringify(data), '*');
+            }
+        }
+    </script>
+
+</head>
+<body>
+</body>
+</html>

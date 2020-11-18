@@ -1,0 +1,5 @@
+[
+{ResourceId: 'Satellite1', Title : '过站时间', StartDate : "2010-12-09 14:02", EndDate : "2010-12-09 16:07",Resizable:false,Draggable:false},
+{ResourceId: 'Satellite2', Title : '过站时间2', StartDate : "2010-12-09 12:02", EndDate : "2010-12-09 13:07",Resizable:false,Draggable:false},
+{ResourceId: 'Satellite2', Title : '过站时间2', StartDate : "2010-12-09 10:02",EndDate : "2010-12-09 11:07",Resizable:false,Draggable:false}
+]

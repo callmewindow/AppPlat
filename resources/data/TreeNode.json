@@ -1,0 +1,12 @@
+[
+    {"name":"新建方案一","type":"Solution","index":0,"leaf":false,
+         "children":
+             [
+                 { "name":"新建卫星一","type":"Satellite","index":0,"leaf":false,
+                     "children":[
+                         {"name":"新建传感器一","type":"Sensor","index":0,"leaf":true}
+                 ]},
+                 {"name":"新建地面站一","type":"GroundStation","index":1,"leaf":true}
+             ]
+     }
+]

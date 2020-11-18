@@ -1,0 +1,175 @@
+/**
+ * Created by winter on 2014/9/5.
+ */
+[
+    {
+        "name": "太阳",
+        "type": "Sun",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "SunInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "SunFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "水星",
+        "type": "Mercury",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "MercuryInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "MercuryFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "金星",
+        "type": "Venus",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "VenusInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "VenusFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "地球",
+        "type": "Earth",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "EarthInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "EarthFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "火星",
+        "type": "Mars",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "MarsInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "MarsFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "木星",
+        "type": "Jupiter",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "JupiterInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "JupiterFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "土星",
+        "type": "Saturn",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "SaturnInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "SaturnFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "天王星",
+        "type": "Uranus",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "UranusInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "UranusFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "海王星",
+        "type": "Neptune",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "NeptuneInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "NeptuneFixed",
+                "leaf": true
+            }
+        ]
+    },
+    {
+        "name": "月球",
+        "type": "Moon",
+        "leaf": false,
+        "children": [
+            {
+                "name": "惯性坐标系",
+                "type": "NeptuneInertial",
+                "leaf": true
+            },
+            {
+                "name": "固连坐标系",
+                "type": "NeptuneFixed",
+                "leaf": true
+            }
+        ]
+    }
+]

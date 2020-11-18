@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script src="../../../libs/threeJS/three.js"></script>
+
+<script type="text/javascript" src="../../../js/CoverAnalysis/Matrix.js"></script>
+
+<script type="text/javascript" src="../../../jsunit/app/jsUnitCore.js"></script>
+
+<script type="text/javascript">
+    function testvectorProjection(){
+        var vectorBefore = new THREE.Vector3(1, 2, 2), vectorAfter = new THREE.Vector3(2, 1, 2);
+        var result = Matrix.vectorProjection(vectorBefore, vectorAfter);
+        var predictResult = new THREE.Vector3(10 / 9, -7 / 9, 2 / 9);
+        assertObjectEquals(predictResult, result);
+    }
+
+    function testaxisVector(){
+        var vector1 = new THREE.Vector3(1, 2, 2), vector2 = new THREE.Vector3(2, 1, 2);
+        var result = Matrix.axisVector(vectorBefore, vectorAfter);
+        var predictResult = new THREE.Vector3();
+        assertObjectEquals(predictResult, result);
+    }
+</script>
+<body>
+
+</body>
+</html>
