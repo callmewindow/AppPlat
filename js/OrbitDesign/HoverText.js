@@ -239,13 +239,7 @@ var HoverText = {
         circle.style.top = y - ORBIT.circleR + "px";
         circle.style.height = ORBIT.textY + "px";
         circle.style.width = ORBIT.textX + "px";
-        var pid;
-        if(-1 != navigator.userAgent.indexOf('Firefox')){
-            pid = text.textContent.charAt(0).toLocaleLowerCase() + text.textContent.substring(1);
-        }
-        else{
-            pid = text.innerText.charAt(0).toLocaleLowerCase() + text.innerText.substring(1);
-        }
+        var pid = text.innerText.charAt(0).toLocaleLowerCase() + text.innerText.substring(1);
         if (x - ORBIT.circleR < ORBIT.canvas.getBoundingClientRect().left || y - ORBIT.circleR < ORBIT.canvas.getBoundingClientRect().top) {
             circle.display = 'none';
             if (this.detectHoverText(pid)) {
@@ -670,17 +664,10 @@ var HoverText = {
     },
     //检测父div中是否存在相应行星的span
     detectHoverText: function(pid){
-        var PID = pid.charAt(0).toLocaleUpperCase() + pid.substring(1);
-        for(var i in ORBIT.canvas.parentNode.children){
-            if(-1 != navigator.userAgent.indexOf('Firefox')){
-                if(PID == ORBIT.canvas.parentNode.children[i].textContent){
-                    return true;
-                }
-            }
-            else{
-                if(PID == ORBIT.canvas.parentNode.children[i].innerText){
-                    return true;
-                }
+    var PID = pid.charAt(0).toLocaleUpperCase() + pid.substring(1);
+    for(var i in ORBIT.canvas.parentNode.children){
+    if(PID == ORBIT.canvas.parentNode.children[i].innerText){
+                return true;
             }
         }
         return false;

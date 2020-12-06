@@ -2888,8 +2888,6 @@ var startOrbitSimu = function() {
         resetScene();
     }
     HoverText.refreshHovertextForPlanet();//更新界面文字
-//    setTimeout(function () {
-//    }, "50");
     window.requestAnimationFrame(startOrbitSimu);
 };
 //重置摄像机的位置

@@ -1638,11 +1638,7 @@ Ext.define('OrbitDesignApp.controller.TreeController', {
         var sm = panel.getSelectionModel();
         panel.getPlugin('rowEditing').cancelEdit();
         var selectRow = sm.getSelection()[0];
-        if(selectRow == null || selectRow == undefined || orbit.getSectionSum() == 0 || selectRow.data.numberId == 0){
-            this.getOrbitSectionWindow().queryById('errorLabel').setText(APC.TIP_OF_DELETE_ORBIT_SECTION);
-            setTimeout(function(){
-                Ext.getCmp('orbitSectionWindow').queryById('errorLabel').setText("");
-            }, 2000);
+        if(selectRow == null || selectRow == undefined || orbit.getSectionSum() == 0){
             return;
         }
         var id = selectRow.data.numberId - 1;

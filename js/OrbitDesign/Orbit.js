@@ -977,13 +977,15 @@ ORBIT.Orbit.prototype.updateSection = function(id, sTime, startCenter, endPlanet
 ORBIT.Orbit.prototype.deleteSection = function(id){
     var len = this.orbitSection.length;
     if(id != null && id != undefined){
-        this.orbitSection[id].hide();
-        for(var i = id; i < len - 1; i++){
-            this.orbitSection[i] = this.orbitSection[i + 1];
-            this.orbitSection[i].id -= 1;
+        if(id != -1){
+            this.orbitSection[id].hide();
+            for(var i = id; i < len - 1; i++){
+                this.orbitSection[i] = this.orbitSection[i + 1];
+                this.orbitSection[i].id -= 1;
+            }
+            delete this.orbitSection[len - 1];
+            this.orbitSection.length -= 1;
         }
-        delete this.orbitSection[len - 1];
-        this.orbitSection.length -= 1;
     }
     else{
         var len = this.orbitSection.length;

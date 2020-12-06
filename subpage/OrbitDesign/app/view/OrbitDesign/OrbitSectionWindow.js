@@ -192,51 +192,33 @@ Ext.define('OrbitDesignApp.view.OrbitDesign.OrbitSectionWindow', {
                             margin:'10 0 0 10',
                             items: [
                                 {
-                                    xtype: 'container',
-                                    layout: 'hbox',
-                                    padding:'0 0 0 10',
-                                    items: [
-                                        {
-                                            xtype: 'combobox',
-                                            itemId: 'axescombo',
-                                            align:'center',
-                                            fieldLabel: '坐标系',
-                                            showText: true,
-                                            labelAlign: 'right',
-                                            labelPad: 10,
-                                            labelWidth: 120,
-                                            width: 240,
-                                            labelSeparator: ' ',
-                                            mode: 'local',
-                                            store: new Ext.data.ArrayStore({
-                                                fields: ['name', 'value'],
-                                                data: [
-                                                    ['惯性坐标系', 'iAxes']
-                                                ]   //声明一个数组，提供数据
-                                            }),
-                                            displayField: 'name',
-                                            valueField: 'value',
-                                            value: 'iAxes',
-                                            editable: false,
-                                            padding:'0 10 0 0'
-                                        },
-                                        {
-                                            text: '',
-                                            xtype:'label',
-                                            itemId: 'errorLabel',
-                                            style: {
-                                                color: 'red'
-                                            },
-                                            width: 250,
-                                            scope: this,
-                                            margin:'0 0 5 30'
-                                        }
-                                    ]
+                                    xtype: 'combobox',
+                                    itemId: 'axescombo',
+                                    align:'center',
+                                    fieldLabel: '坐标系',
+                                    showText: true,
+                                    labelAlign: 'right',
+                                    labelPad: 10,
+                                    labelWidth: 120,
+                                    width: 240,
+                                    labelSeparator: ' ',
+                                    mode: 'local',
+                                    store: new Ext.data.ArrayStore({
+                                        fields: ['name', 'value'],
+                                        data: [
+                                            ['惯性坐标系', 'iAxes']
+                                        ]   //声明一个数组，提供数据
+                                    }),
+                                    displayField: 'name',
+                                    valueField: 'value',
+                                    value: 'iAxes',
+                                    editable: false,
+                                    padding:'0 10 0 10'
                                 },
                                 {
                                     xtype: 'container',
                                     layout: 'hbox',
-                                    padding:'10 0 0 10',
+                                    padding:'0 0 0 10',
                                     items:[
                                         {
                                             xtype: 'container',

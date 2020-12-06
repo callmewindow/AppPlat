@@ -1,6 +1,18 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+		<meta name="description" content="">
+		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+		<meta content="yes" name="apple-mobile-web-app-capable" />
+		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+		<meta content="telephone=no" name="format-detection" />
+		<title>国家空间科学数据中心(National Space Science Data Center)</title>
+		<link rel="stylesheet" href="../css/reset.css">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/news.css" />
+		<link rel="stylesheet" href="../css/aboutus.css" />
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script src="../html/index.js"></script>
     <!-- vue所需的依赖 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- 引入elementUI样式 -->
@@ -11,50 +23,72 @@
     <!-- 引入elementUI组件库 -->
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <!-- 引入jQuery所需依赖-->
-    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
     <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
   </head>
 
-  <body>
-    <div id="app">
-      <!-- 注销按钮 -->
-      <el-button id="logoutBtn" type="info" @click="logoutCAS(loginFlag)">
-        注销
-      </el-button>
-      <!-- 具体应用的显示窗口 -->
-      <div id="frameDiv" class="frameContent">
-        <iframe
-          id="subPage"
-          frameborder="no"
-          border="0"
-          marginwidth="0"
-          marginheight="0"
-          style="width: 100%"
-        ></iframe>
-        <!-- <iframe id="subPage" frameborder="no" border="0" marginwidth="0" marginheight="0" style="width:100%" src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩" ></iframe> -->
+  <body class="nssdc_bg">
+    <script src="head.js"></script>
+		<!--logo背景-->
+		<div class="nssdc_info">
+			<img src="../img/topbg.png" class="topbg">
+			<div class="nssdc_info_main">
+				<a href="index.html"><img src="../img/logo.png" /></a>
+			</div>
+		</div>
+		<div class="nssdc_news_content">
+			<div class="nssdc_menu_bar">
+        <a href="../html/index.html"><!-- <img src="../img/home.png"> --><span>门户首页</span></a>
+        <span>></span>
+        <span>空间科学工程应用系统</span>
+      </div>
+      <div class = "nssdc_sub_content">
+        <div id="app">
+          <!-- 返回按钮 -->
+          <el-button id="returnBtn" type="primary" size="small" @click="returnBack()">
+            返回上一层应用
+          </el-button>
+          <!-- 具体应用的显示窗口 -->
+          <div id="frameDiv" class="frameContent">
+            <iframe
+              id="subPage"
+              frameborder="no"
+              border="0"
+              marginwidth="0"
+              marginheight="0"
+              style="width: 100%"
+            ></iframe>
+            <!-- <iframe id="subPage" frameborder="no" border="0" marginwidth="0" marginheight="0" style="width:100%" src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩" ></iframe> -->
+          </div>
+          <!-- 注销按钮 -->
+          <el-button v-if="logged" id="logoutBtn" type="info" @click="logoutCAS(loginFlag)">
+            注销
+          </el-button>
+        </div>
       </div>
     </div>
+		<script src="footer.js"></script>
   </body>
 
   <style>
+    #returnBtn {
+      float: left;
+    }
     #logoutBtn {
-      top: 1vh;
-      left: 1vw;
-      position: absolute;
+      float: right;
     }
-
-    .content {
-      width: 1170px;
-      height: 100px;
-      background-color: #c3c3c3;
-      margin: 0 auto;
-    }
-
     .frameContent {
       width: 1170px;
       margin: 0 auto;
     }
+    /* .content {
+      width: 1170px;
+      height: 100px;
+      background-color: #c3c3c3;
+      margin: 0 auto;
+    } */
   </style>
+  <!-- vue有关控制代码 -->
   <script type="text/javascript">
     var app = new Vue({
       el: "#app",
@@ -73,9 +107,7 @@
         }
       },
       mounted() {
-        // if (!this.logged) {
-        //   this.requestLogin();
-        // }
+        this.checkLogin()
       },
       methods: {
         requestLogin() {
@@ -100,6 +132,9 @@
           if (!this.logged) {
             this.requestLogin();
           }
+        },
+        returnBack() {
+          window.history.back();
         },
         goStarNet() {
           // window.history.back();
@@ -155,10 +190,14 @@
       },
     });
   </script>
+  <!-- 平台基础控制代码 -->
   <script type="text/javascript">
     var frameHeight = 0;
     //        document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
     window.onload = function () {
+      // 模板功能迁移处
+			info_h = $(".nssdc_info").height();
+			getScroll();
       //加随机数，模拟用户的随机登陆
       //            var src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=";
       //            src += randomString(24);
@@ -227,4 +266,46 @@
       }
     }
   </script>
+  <!-- 模板部分控制代码 -->
+	<script type="text/javascript">
+		function menu() {
+			$(".subNavBox").slideToggle(500).siblings(".subNavBox").slideUp(500);
+		}
+		var info_h = "";
+		//窗口大小发生改变
+		$(window).resize(function() {
+			//获取窗口宽度
+			var windSize = window.innerWidth;
+			if(windSize > 1115) {
+				$(".menu").slideDown(0);
+			} else {
+				$(".menu").slideUp(0);
+			}
+			info_h = $(".nssdc_info").height();
+		});
+    //顶部logo切换
+    // 多个onload，因此将内容迁移至平台基础功能有关内容的onload处
+		// window.onload = function() {
+		// }
+		$(window).scroll(function() {
+			getScroll();
+		});
+
+		function getScroll() {
+			var S = document.body.scrollTop || document.documentElement.scrollTop;
+			if(S >= info_h) {
+				$("#logo_tit1").hide();
+				$("#logo_tit2").show();
+			} else {
+				$("#logo_tit2").hide();
+				$("#logo_tit1").show();
+			}
+		}
+		//顶部logo切换结束
+		
+		//用户登录
+		yhdl();
+		//页面访问量+1
+		selectYmfwl();
+	</script>
 </html>
