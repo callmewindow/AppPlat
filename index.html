@@ -1,311 +1,376 @@
 <html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<meta name="description" content="">
-		<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-		<meta content="yes" name="apple-mobile-web-app-capable" />
-		<meta content="black" name="apple-mobile-web-app-status-bar-style" />
-		<meta content="telephone=no" name="format-detection" />
-		<title>国家空间科学数据中心(National Space Science Data Center)</title>
-		<link rel="stylesheet" href="../css/reset.css">
-		<link rel="stylesheet" href="../css/style.css">
-		<link rel="stylesheet" href="../css/news.css" />
-		<link rel="stylesheet" href="../css/aboutus.css" />
-		<script src="../js/jquery-3.4.1.min.js"></script>
-		<script src="../html/index.js"></script>
-    <!-- vue所需的依赖 -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <!-- 引入elementUI样式 -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
-    />
-    <!-- 引入elementUI组件库 -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <!-- 引入jQuery所需依赖-->
-    <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
-    <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
-  </head>
 
-  <body class="nssdc_bg">
-    <script src="head.js"></script>
-		<!--logo背景-->
-		<div class="nssdc_info">
-			<img src="../img/topbg.png" class="topbg">
-			<div class="nssdc_info_main">
-				<a href="index.html"><img src="../img/logo.png" /></a>
-			</div>
-		</div>
-		<div class="nssdc_news_content">
-			<div class="nssdc_menu_bar">
-        <a href="../html/index.html"><!-- <img src="../img/home.png"> --><span>门户首页</span></a>
-        <span>></span>
-        <span>空间科学工程应用系统</span>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+  <meta name="description" content="" />
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no" name="format-detection" />
+  <title>国家空间科学数据中心(National Space Science Data Center)</title>
+  <link rel="stylesheet" href="./template/css/reset.css" />
+  <link rel="stylesheet" href="./template/css/style.css" />
+  <link rel="stylesheet" href="./template/css/news.css" />
+  <link rel="stylesheet" href="./template/css/aboutus.css" />
+  <script src="./template/js/jquery-3.4.1.min.js"></script>
+  <!-- vue所需的依赖 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- 引入elementUI样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css" />
+  <!-- 引入elementUI组件库 -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  <!-- 引入jQuery所需依赖-->
+  <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script> -->
+  <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+</head>
+
+<body class="nssdc_bg">
+  <div id="app">
+    <div class="nssdc_top">
+      <div class="nssdc_top_main">
+        <div class="nssdc_top_left">
+          <a href="#" id="logo_tit1"><img src="./template/img/toplogo.png" />国家科技资源共享服务平台</a>
+          <a href="#" id="logo_tit2" style="display: none"><img
+              src="./template/img/logo-2-big.png" />国家空间科学数据中心</a>
+        </div>
+        <div class="menubtn" id="menubtn" onclick="menu()">
+          <img src="./template/img/menu.png" />
+        </div>
+        <div class="menu subNavBox">
+          <!--未登录-->
+          <div v-if="!logged" class="nologin_right">
+						<a href="">登录/注册</a>
+					</div>
+          <!--已登录-->
+          <div v-if="logged" class="login_div">
+            <div class="login_state">
+              <img src="./template/img/photo_login.png" />
+              <span>{{ username }}</span>
+            </div>
+            <ul class="login_ul">
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="./template/img/manage.png" />
+                  <span>管理后台</span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" @click="logoutCAS(loginFlag)">
+                  <img src="./template/img/logout.png" />
+                  <span>退出</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="language">
+            <a href="#">ENGLISH</a>
+          </div>
+          <div class="nssdc_top_right">
+            <a href="#"><span>我的访问</span></a>
+            <a href="#"><span>数据政策</span></a>
+            <a href="#"><span>典型服务</span></a>
+            <a href="#"><span>帮助中心</span></a>
+            <a href="#"><span>意见建议</span></a>
+            <a href="#"><span>关于我们</span></a>
+          </div>
+        </div>
       </div>
-      <div class = "nssdc_sub_content">
-        <div id="app">
+    </div>
+    <!--logo背景-->
+    <div class="nssdc_info">
+      <img src="./template/img/topbg.png" class="topbg" />
+      <div class="nssdc_info_main">
+        <a href="index.html"><img src="./template/img/logo.png" /></a>
+      </div>
+    </div>
+    <div class="nssdc_news_content">
+      <div class="nssdc_menu_bar">
+        <a href="#"><img src="./template/img/home.png" /></a>
+        <span>></span>
+        <span>空间科学工程应用平台</span>
+      </div>
+      <div class="nssdc_sub_content">
+        <div>
           <!-- 返回按钮 -->
           <el-button id="returnBtn" type="primary" size="small" @click="returnBack()">
             返回上一层应用
           </el-button>
           <!-- 具体应用的显示窗口 -->
           <div id="frameDiv" class="frameContent">
-            <iframe
-              id="subPage"
-              frameborder="no"
-              border="0"
-              marginwidth="0"
-              marginheight="0"
-              style="width: 100%"
-            ></iframe>
+            <iframe id="subPage" frameborder="no" border="0" marginwidth="0" marginheight="0"
+              style="width: 100%"></iframe>
             <!-- <iframe id="subPage" frameborder="no" border="0" marginwidth="0" marginheight="0" style="width:100%" src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩" ></iframe> -->
           </div>
           <!-- 注销按钮 -->
-          <el-button v-if="logged" id="logoutBtn" type="info" @click="logoutCAS(loginFlag)">
+          <!-- <el-button v-if="logged" id="logoutBtn" type="info" @click="logoutCAS(loginFlag)">
             注销
-          </el-button>
+          </el-button> -->
         </div>
       </div>
     </div>
-		<script src="footer.js"></script>
-  </body>
+    <div class="footer">
+      <div class="footer_main">
+        <div class="footer_logo">
+          <img src="./template/img/logo-2-big.png" />
+        </div>
+        <div class="footer_company">
+          <p><span>国家空间科学数据中心</span><span>版权所有</span></p>
+          <p>
+            <span>地址：北京市海淀区中关村二条一号</span><span>邮编：100190</span>
+          </p>
+          <p>
+            <span>京ICP备05061203号-26</span><span>京公网安备110402500029号</span>
+          </p>
+          <p>技术支持：中国科学院计算机网络信息中心</p>
+        </div>
+        <div class="footer_biao">
+          <img src="./template/img/erweima.png" />
+        </div>
+        <div class="footer_chat">
+          <p>联系电话：010-52804246</p>
+          <p>E-mail：nssdc_service@nssc.ac.cn</p>
+          <p>
+            <a href="">意见反馈</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 
-  <style>
-    #returnBtn {
-      float: left;
-    }
-    #logoutBtn {
+<style>
+  #returnBtn {
+    float: left;
+  }
+  /* #logoutBtn {
       float: right;
-    }
-    .frameContent {
-      width: 1170px;
-      margin: 0 auto;
-    }
-    /* .content {
+    } */
+  .frameContent {
+    width: 1170px;
+    margin: 0 auto;
+  }
+  /* .content {
       width: 1170px;
       height: 100px;
       background-color: #c3c3c3;
       margin: 0 auto;
     } */
-  </style>
-  <!-- vue有关控制代码 -->
-  <script type="text/javascript">
-    var app = new Vue({
-      el: "#app",
-      data: {
-        logged: false,
-        loginFlag: "CAS",
-        CASUsername: "",
-        ticket: "",
+</style>
+<!-- vue有关控制代码 -->
+<script type="text/javascript">
+  var app = new Vue({
+    el: "#app",
+    data: {
+      logged: false,
+      loginFlag: "CAS",
+      username: "",
+      ticket: "",
+    },
+    mounted() {
+      this.checkLogin();
+    },
+    methods: {
+      requestLogin() {
+        Vue.prototype
+          .$confirm("请在登录后使用本系统", "提示", {
+            showClose: false,
+            closeOnClickModal: false,
+            confirmButtonText: "前往统一认证",
+            cancelButtonText: "返回研究网络",
+            type: "warning",
+          })
+          .then(() => {
+            // 进行统一认证
+            this.loginCAS();
+          })
+          .catch(() => {
+            // 返回研究网络
+            this.goStarNet();
+          });
       },
-      created() {
+      checkLogin() {
         let params = this.getLocationParams();
         if (JSON.stringify(params) !== "{}") {
           this.logged = true;
-          this.CASUsername = params.CURRENTCASUSER;
+          this.username = params.CURRENTCASUSER;
           this.ticket = params.ticket;
         }
+        if (!this.logged) {
+          this.requestLogin();
+        }
       },
-      mounted() {
-        this.checkLogin()
+      returnBack() {
+        window.history.back();
       },
-      methods: {
-        requestLogin() {
-          Vue.prototype
-            .$confirm("请在登录后使用本系统", "提示", {
-              showClose: false,
-              closeOnClickModal: false,
-              confirmButtonText: "前往统一认证",
-              cancelButtonText: "返回研究网络",
-              type: "warning",
-            })
-            .then(() => {
-              // 进行统一认证
-              this.loginCAS();
-            })
-            .catch(() => {
-              // 返回研究网络
-              this.goStarNet();
-            });
-        },
-        checkLogin() {
-          if (!this.logged) {
-            this.requestLogin();
-          }
-        },
-        returnBack() {
-          window.history.back();
-        },
-        goStarNet() {
-          // window.history.back();
-          window.location.href = "http://starnet.cssdc.ac.cn/";
-        },
-        loginCAS() {
-          window.location.href =
-            "https://umt.nssdc.ac.cn/login?service=http://localhost/AppPlat/index.html";
-        },
-        /**
-         * 注销cas
-         * @param url 客户端的注销回调函数 http://xxxxxx
-         * @param loginFlag 客户端通过接口获取的登录标识 loginFlag
-         */
-        logoutCAS(loginFlag) {
-          console.log(loginFlag);
-          url = "http://localhost/AppPlat/index.html";
-          jQuery.ajax({
-            url:
-              "https://umt.nssdc.ac.cn/logoutClient.do?loginFlag=" + loginFlag,
-            async: true,
-            type: "get",
-            dataType: "JSONP",
-            jsonp: "callback",
-            jsonpCallback: "jsonpCallback",
-            success: function (data) {
-              if (data && data != "") {
-                //第三方登录进来
-                window.top.location.href = data + url; //注销：第三方、cas、客户端
-              } else {
-                //非第三方登录进来
-                window.top.location.href =
-                  "https://umt.nssdc.ac.cn/logout?service=" + url; //注销：cas、客户端
-              }
-            },
-          });
-        },
-        getLocationParams() {
-          // author: https://www.cnblogs.com/callmelx/p/10654284.html
-          var url = decodeURI(location.search); //获取url中"?"符后的字串
-          var theRequest = new Object();
-          if (url.indexOf("?") != -1) {
-            var str = url.substr(1);
-            strs = str.split("&");
-            for (var i = 0; i < strs.length; i++) {
-              theRequest[strs[i].split("=")[0]] = unescape(
-                strs[i].split("=")[1]
-              );
+      goStarNet() {
+        // window.history.back();
+        window.location.href = "http://starnet.cssdc.ac.cn/";
+      },
+      loginCAS() {
+        window.location.href =
+          "https://umt.nssdc.ac.cn/login?service=http://localhost/AppPlat/index.html";
+      },
+      /**
+       * 注销cas
+       * @param url 客户端的注销回调函数 http://xxxxxx
+       * @param loginFlag 客户端通过接口获取的登录标识 loginFlag
+       */
+      logoutCAS(loginFlag) {
+        console.log(loginFlag);
+        // session.invalidate();
+        url = "http://localhost/AppPlat/index.html";
+        jQuery.ajax({
+          url:
+            "https://umt.nssdc.ac.cn/logoutClient.do?loginFlag=" + loginFlag,
+          async: true,
+          type: "get",
+          dataType: "JSONP",
+          jsonp: "callback",
+          jsonpCallback: "jsonpCallback",
+          success: function (data) {
+            if (data && data != "") {
+              //第三方登录进来
+              window.top.location.href = data + url; //注销：第三方、cas、客户端
+            } else {
+              //非第三方登录进来
+              window.top.location.href =
+                "https://umt.nssdc.ac.cn/logout?service=" + url; //注销：cas、客户端
             }
-          }
-          return theRequest;
-        },
+          },
+        });
       },
-    });
-  </script>
-  <!-- 平台基础控制代码 -->
-  <script type="text/javascript">
-    var frameHeight = 0;
-    //        document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
-    window.onload = function () {
-      // 模板功能迁移处
-			info_h = $(".nssdc_info").height();
-			getScroll();
-      //加随机数，模拟用户的随机登陆
-      //            var src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=";
-      //            src += randomString(24);
-      //            src += "&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
-      var src1 =
-        "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=111bbbe18cd23317f008f111&account=nie&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=聂殿辉";
-      var src3 =
-        "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=333bbbe18cd23317f008f333&account=du&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=杜鹏宇";
-      var src4 =
-        "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
-      var randomNumber = Math.random();
-      if (randomNumber >= 0 && randomNumber < 0.3) {
-        document.getElementById("subPage").src = src1;
-      }
-      //            else if(randomNumber >= 0.25 && randomNumber < 0.5){
-      //                document.getElementById('subPage').src = src2;
-      //            }
-      else if (randomNumber >= 0.3 && randomNumber < 0.6) {
-        document.getElementById("subPage").src = src3;
-      } else if (randomNumber >= 0.6 && randomNumber <= 1) {
-        document.getElementById("subPage").src = src4;
-      }
-      console.log(document.getElementById("subPage").src);
-    };
-    //        randomString = function (len) {
-    //                    len = len || 24;
-    //                    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
-    //                    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
-    //                    var maxPos = $chars.length;
-    //                    var pwd = '';
-    //                    for (i = 0; i < len; i++) {
-    //                        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-    //                    }
-    //                    return pwd;
-    //                }
-    window.addEventListener("message", getMessage, false);
-    function getMessage(event) {
-      // 这里注意vue也会发出一个message，但是data已经是json的形式，因此需要提前判断
-      windowMsg = event.data;
-      if (typeof windowMsg !== "string" || windowMsg.constructor !== String) {
-        console.log("非内部信息");
-        return;
-      }
-      var data = JSON.parse(event.data);
-      console.log(data);
-      if (data.command == "height") {
-        frameHeight = data.value + "px";
-        document.getElementById("subPage").style.height = frameHeight;
-      } else if (data.command == "max") {
-        var div = document.getElementById("frameDiv");
-        div.style.position = "absolute";
-        div.style.top = 0;
-        div.style.left = 0;
-        div.style.zIndex = 999;
-        div.style.width = window.screen.availWidth;
-        div.style.height = window.screen.availHeight;
-      } else if (data.command == "restore") {
-        var div = document.getElementById("frameDiv");
-        div.style.position = "relative";
-        div.style.width = "1170px";
-        div.style.height = frameHeight;
-      } else {
-        console.log(data);
-
-        alert(data);
-      }
+      getLocationParams() {
+        // author: https://www.cnblogs.com/callmelx/p/10654284.html
+        var url = decodeURI(location.search); //获取url中"?"符后的字串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+          var str = url.substr(1);
+          strs = str.split("&");
+          for (var i = 0; i < strs.length; i++) {
+            theRequest[strs[i].split("=")[0]] = unescape(
+              strs[i].split("=")[1]
+            );
+          }
+        }
+        return theRequest;
+      },
+    },
+  });
+</script>
+<!-- 平台基础控制代码 -->
+<script type="text/javascript">
+  var frameHeight = 0;
+  //        document.write(returnCitySN["cip"]+','+returnCitySN["cname"])
+  window.onload = function () {
+    // 模板功能迁移处
+    info_h = $(".nssdc_info").height();
+    getScroll();
+    //加随机数，模拟用户的随机登陆
+    //            var src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=";
+    //            src += randomString(24);
+    //            src += "&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
+    var src1 =
+      "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=111bbbe18cd23317f008f111&account=nie&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=聂殿辉";
+    var src3 =
+      "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=333bbbe18cd23317f008f333&account=du&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=杜鹏宇";
+    var src4 =
+      "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
+    var randomNumber = Math.random();
+    if (randomNumber >= 0 && randomNumber < 0.3) {
+      document.getElementById("subPage").src = src1;
     }
-  </script>
-  <!-- 模板部分控制代码 -->
-	<script type="text/javascript">
-		function menu() {
-			$(".subNavBox").slideToggle(500).siblings(".subNavBox").slideUp(500);
-		}
-		var info_h = "";
-		//窗口大小发生改变
-		$(window).resize(function() {
-			//获取窗口宽度
-			var windSize = window.innerWidth;
-			if(windSize > 1115) {
-				$(".menu").slideDown(0);
-			} else {
-				$(".menu").slideUp(0);
-			}
-			info_h = $(".nssdc_info").height();
-		});
-    //顶部logo切换
-    // 多个onload，因此将内容迁移至平台基础功能有关内容的onload处
-		// window.onload = function() {
-		// }
-		$(window).scroll(function() {
-			getScroll();
-		});
+    //            else if(randomNumber >= 0.25 && randomNumber < 0.5){
+    //                document.getElementById('subPage').src = src2;
+    //            }
+    else if (randomNumber >= 0.3 && randomNumber < 0.6) {
+      document.getElementById("subPage").src = src3;
+    } else if (randomNumber >= 0.6 && randomNumber <= 1) {
+      document.getElementById("subPage").src = src4;
+    }
+    console.log(document.getElementById("subPage").src);
+  };
+  //        randomString = function (len) {
+  //                    len = len || 24;
+  //                    var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';
+  //                    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+  //                    var maxPos = $chars.length;
+  //                    var pwd = '';
+  //                    for (i = 0; i < len; i++) {
+  //                        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+  //                    }
+  //                    return pwd;
+  //                }
+  window.addEventListener("message", getMessage, false);
+  function getMessage(event) {
+    // 这里注意vue也会发出一个message，但是data已经是json的形式，因此需要提前判断
+    windowMsg = event.data;
+    if (typeof windowMsg !== "string" || windowMsg.constructor !== String) {
+      console.log("非内部信息");
+      return;
+    }
+    var data = JSON.parse(event.data);
+    console.log(data);
+    if (data.command == "height") {
+      frameHeight = data.value + "px";
+      document.getElementById("subPage").style.height = frameHeight;
+    } else if (data.command == "max") {
+      var div = document.getElementById("frameDiv");
+      div.style.position = "absolute";
+      div.style.top = 0;
+      div.style.left = 0;
+      div.style.zIndex = 999;
+      div.style.width = window.screen.availWidth;
+      div.style.height = window.screen.availHeight;
+    } else if (data.command == "restore") {
+      var div = document.getElementById("frameDiv");
+      div.style.position = "relative";
+      div.style.width = "1170px";
+      div.style.height = frameHeight;
+    } else {
+      console.log(data);
 
-		function getScroll() {
-			var S = document.body.scrollTop || document.documentElement.scrollTop;
-			if(S >= info_h) {
-				$("#logo_tit1").hide();
-				$("#logo_tit2").show();
-			} else {
-				$("#logo_tit2").hide();
-				$("#logo_tit1").show();
-			}
-		}
-		//顶部logo切换结束
-		
-		//用户登录
-		yhdl();
-		//页面访问量+1
-		selectYmfwl();
-	</script>
+      alert(data);
+    }
+  }
+</script>
+<!-- 模板部分控制代码 -->
+<script type="text/javascript">
+  function menu() {
+    $(".subNavBox").slideToggle(500).siblings(".subNavBox").slideUp(500);
+  }
+  var info_h = "";
+  //窗口大小发生改变
+  $(window).resize(function () {
+    //获取窗口宽度
+    var windSize = window.innerWidth;
+    if (windSize > 1115) {
+      $(".menu").slideDown(0);
+    } else {
+      $(".menu").slideUp(0);
+    }
+    info_h = $(".nssdc_info").height();
+  });
+  //顶部logo切换
+  // 多个onload，因此将内容迁移至平台基础功能有关内容的onload处
+  // window.onload = function() {
+  // }
+  // window.onload = function() {
+  // }
+  $(window).scroll(function () {
+    getScroll();
+  });
+
+  function getScroll() {
+    var S = document.body.scrollTop || document.documentElement.scrollTop;
+    if (S >= info_h) {
+      $("#logo_tit1").hide();
+      $("#logo_tit2").show();
+    } else {
+      $("#logo_tit2").hide();
+      $("#logo_tit1").show();
+    }
+  }
+    //顶部logo切换结束
+</script>
+
 </html>

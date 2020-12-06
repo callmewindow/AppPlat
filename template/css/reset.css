@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+}
+html,body,p{
+    margin: 0;
+    font-size: 14px;
+    padding: 0;
+    font-weight: normal;
+    box-sizing: content-box;
+    font-family: "思源黑体",Arial;
+}
+body{
+}
+input, button ,select,textarea{ cursor: pointer; -webkit-appearance: none; } 
+input[type="checkbox"] {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 0px;
+    padding: initial;
+    border: 1px solid #888;
+}
+input:-webkit-autofill { box-shadow: 0 0 0px 1000px white inset !important;}
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+ol,ul,li {
+    list-style:none;
+    padding: 0;
+    margin: 0;
+}
+blockquote,q {
+    quotes:none;
+}
+blockquote:before,blockquote:after,q:before,q:after {
+    content:'';
+    content:none;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+th,td {
+    vertical-align:middle;
+}
+
+a {
+    outline:none;
+    color:#fff;
+    text-decoration:none;
+    -webkit-backface-visibility:hidden;
+}
+a:focus {
+    outline:none;
+}
+input:focus,select:focus,textarea:focus,button:focus{
+    outline:-webkit-focus-ring-color auto 0;
+    outline:none;
+}
+img{
+    vertical-align: middle;
+}

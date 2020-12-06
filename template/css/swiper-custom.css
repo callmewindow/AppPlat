@@ -1,0 +1,523 @@
+/**
+ * Swiper 3.4.2
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ *
+ * http://www.idangero.us/swiper/
+ *
+ * Copyright 2017, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us/
+ *
+ * Licensed under MIT
+ *
+ * Released on: March 10, 2017
+ */
+.swiper-container {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1
+}
+
+.swiper-container2 {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 1
+}
+.swiper-container-no-flexbox .swiper-slide {
+    float: left
+}
+
+.swiper-container-vertical>.swiper-wrapper {
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column
+}
+
+/*.swiper-wrapper {*/
+/*    position: relative;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    z-index: 1;*/
+/*    display: -webkit-box;*/
+/*    display: -moz-box;*/
+/*    display: -ms-flexbox;*/
+/*    display: -webkit-flex;*/
+/*    display: flex;*/
+/*    -webkit-transition-property: -webkit-transform;*/
+/*    -moz-transition-property: -moz-transform;*/
+/*    -o-transition-property: -o-transform;*/
+/*    -ms-transition-property: -ms-transform;*/
+/*    transition-property: transform;*/
+/*    -webkit-box-sizing: content-box;*/
+/*    -moz-box-sizing: content-box;*/
+/*    box-sizing: content-box;*/
+/*}*/
+
+.swiper-container-android .swiper-slide,.swiper-wrapper {
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -o-transform: translate(0,0);
+    -ms-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0)
+}
+
+.swiper-container-multirow>.swiper-wrapper {
+    -webkit-box-lines: multiple;
+    -moz-box-lines: multiple;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap
+}
+
+/*.swiper-container-free-mode>.swiper-wrapper {*/
+/*    -webkit-transition-timing-function: ease-out;*/
+/*    -moz-transition-timing-function: ease-out;*/
+/*    -ms-transition-timing-function: ease-out;*/
+/*    -o-transition-timing-function: ease-out;*/
+/*    transition-timing-function: ease-out;*/
+/*    margin: 0 auto*/
+/*}*/
+
+.swiper-slide {
+    -webkit-flex-shrink: 0;
+    -ms-flex: 0 0 auto;
+    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.swiper-slide img{
+    border-radius: 5px;
+}
+.swiper-container-autoheight,.swiper-container-autoheight .swiper-slide {
+    height: auto
+}
+
+/*.swiper-container-autoheight .swiper-wrapper {*/
+/*    -webkit-box-align: start;*/
+/*    -ms-flex-align: start;*/
+/*    -webkit-align-items: flex-start;*/
+/*    align-items: flex-start;*/
+/*    -webkit-transition-property: -webkit-transform,height;*/
+/*    -moz-transition-property: -moz-transform;*/
+/*    -o-transition-property: -o-transform;*/
+/*    -ms-transition-property: -ms-transform;*/
+/*    transition-property: transform,height*/
+/*}*/
+
+.swiper-container .swiper-notification {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: -1000
+}
+
+.swiper-wp8-horizontal {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y
+}
+
+.swiper-wp8-vertical {
+    -ms-touch-action: pan-x;
+    touch-action: pan-x
+}
+
+.swiper-button-next,.swiper-button-prev {
+    position: absolute;
+    top: 45%;
+}
+
+
+.swiper-button-prev,.swiper-container-rtl .swiper-button-next {
+    background: url("../img/arrleft.png") no-repeat center;
+    left: -0px;
+    right: auto;
+}
+
+
+.swiper-button-next,.swiper-container-rtl .swiper-button-prev {
+    background: url("../img/arrright.png") no-repeat center;
+    right: -0px;
+    left: auto;
+}
+
+
+.swiper-pagination {
+    position: absolute;
+    text-align: center;
+    -webkit-transition: .3s;
+    -moz-transition: .3s;
+    -o-transition: .3s;
+    transition: .3s;
+    -webkit-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+    z-index: 10
+}
+
+.swiper-pagination.swiper-pagination-hidden {
+    opacity: 0
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets,.swiper-pagination-custom,.swiper-pagination-fraction {
+    bottom: 10px;
+    left: 0;
+    width: 100%
+}
+
+.swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: .2
+}
+
+button.swiper-pagination-bullet {
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -webkit-appearance: none;
+    appearance: none
+}
+
+.swiper-pagination-clickable .swiper-pagination-bullet {
+    cursor: pointer
+}
+
+.swiper-pagination-white .swiper-pagination-bullet {
+    background: #fff
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #007aff
+}
+
+.swiper-pagination-white .swiper-pagination-bullet-active {
+    background: #fff
+}
+
+.swiper-pagination-black .swiper-pagination-bullet-active {
+    background: #000
+}
+
+
+.swiper-container-rtl .swiper-pagination-progress .swiper-pagination-progressbar {
+    -webkit-transform-origin: right top;
+    -moz-transform-origin: right top;
+    -ms-transform-origin: right top;
+    -o-transform-origin: right top;
+    transform-origin: right top
+}
+
+.swiper-container-horizontal>.swiper-pagination-progress {
+    width: 100%;
+    height: 4px;
+    left: 0;
+    top: 0
+}
+
+.swiper-container-vertical>.swiper-pagination-progress {
+    width: 4px;
+    height: 100%;
+    left: 0;
+    top: 0
+}
+
+.swiper-container-cube .swiper-cube-shadow {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .6;
+    -webkit-filter: blur(50px);
+    filter: blur(50px);
+    z-index: 0
+}
+
+
+.swiper-container-fade .swiper-slide {
+    pointer-events: none;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity
+}
+
+.swiper-container-fade .swiper-slide .swiper-slide {
+    pointer-events: none
+}
+
+.swiper-container-fade .swiper-slide-active,.swiper-container-fade .swiper-slide-active .swiper-slide-active {
+    pointer-events: auto
+}
+
+.swiper-zoom-container {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    text-align: center
+}
+
+.swiper-zoom-container>canvas,.swiper-zoom-container>img,.swiper-zoom-container>svg {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain
+}
+
+.swiper-scrollbar {
+    border-radius: 10px;
+    position: relative;
+    -ms-touch-action: none;
+    background: rgba(0,0,0,.1)
+}
+
+.swiper-container-horizontal>.swiper-scrollbar {
+    position: absolute;
+    left: 1%;
+    bottom: 3px;
+    z-index: 50;
+    height: 5px;
+    width: 98%
+}
+
+.swiper-container-vertical>.swiper-scrollbar {
+    position: absolute;
+    right: 3px;
+    top: 1%;
+    z-index: 50;
+    width: 5px;
+    height: 98%
+}
+
+.swiper-scrollbar-drag {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background: rgba(0,0,0,.5);
+    border-radius: 10px;
+    left: 0;
+    top: 0
+}
+
+
+
+
+
+
+.pc-banner {
+    width: 100%;
+    float: left;
+}
+
+
+
+.swiper-container {
+    width: 100%;
+    margin: 0;
+}
+
+@media screen and (max-width: 668px) {
+    .swiper-container {
+        margin: 0;
+    }
+}
+
+.swiper-slide {
+    margin-top: 35px;
+    margin-bottom: 40px;
+}
+
+@media screen and (max-width: 668px) {
+    /*.swiper-slide {
+        -webkit-transform: scale(0.97);
+        transform: scale(0.97);
+    }*/
+}
+
+.swiper-slide-active,.swiper-slide-duplicate-active {
+    /*-webkit-transform: scale(1.15);*/
+    /*transform: scale(1.15);*/
+    z-index: 1002;
+}
+
+
+
+.none-effect {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+}
+
+.swiper-slide a {
+    display: block;
+}
+.swiper-slide-active a:after {
+    background: none;
+}
+.swiper-slide img {
+    width: 100%;
+    border-radius: 5px;
+    display: block;
+    height: auto;
+    border: none;
+}
+
+@media screen and (max-width: 668px) {
+    .swiper-slide img {
+        border-radius: 2px;
+    }
+}
+
+.swiper-pagination {
+    position: relative;
+}
+
+.swiper-pagination-bullet {
+    background: #cfcfcf;
+    margin-left: 4px;
+    margin-right: 4px;
+    width: 20px;
+    height: 5px;
+    opacity: 1;
+    border-radius: inherit;
+    margin-bottom: 4px;
+}
+
+.swiper-pagination-bullet-active {
+    width: 20px;
+    height: 5px;
+    background: #1743c7;
+    margin-bottom: 0;
+}
+
+
+
+.button div:hover {
+    cursor: pointer;
+}
+
+.swiper-button-prev {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.swiper-button-next {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.swiper-container2{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.swiper-container2 .swiper-slide{
+    margin: 0 !important;
+}
+.swiper-container2 .swiper-slide img{
+    border-radius: inherit !important;
+}
+.swiper-container2 .swiper-pagination{
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    margin: 0;
+    text-align: right;
+    height: 35px;
+    line-height: 35px;
+}
+.swiper-container2 .swiper-pagination-bullet-active{
+    width: 16px !important;
+    height: 8px !important;
+    background: #1743c7 !important;
+}
+.swiper-container2 .swiper-pagination-bullet{
+    width: 16px !important;
+    height: 8px !important;
+    background: #fff;
+
+}
+
+.swiper-container3{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+.swiper-container3 .swiper-slide{
+    margin: 0 !important;
+}
+.swiper-container3 .swiper-slide img{
+    border-radius: inherit !important;
+}
+.swiper-container3 .swiper-pagination{
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    margin: 0;
+    text-align: right;
+    height: 35px;
+    line-height: 35px;
+}
+.swiper-container3 .swiper-pagination-bullet-active{
+    width: 16px !important;
+    height: 8px !important;
+    background: #1743c7 !important;
+}
+.swiper-container3 .swiper-pagination-bullet{
+    width: 16px !important;
+    height: 8px !important;
+    background: #fff;
+
+}
+.swiper-container4 {
+	width: 100%;
+	height: 100%;
+	position: relative;
+    overflow: hidden;
+}
+.swiper-container4 .swiper-slide{height:0px;overflow: hidden;} /* 随意指定一个height值即可 */    
+.swiper-container4 .swiper-slide-active { height:auto;}
+.swiper-container4 .swiper-pagination{
+	position: absolute;
+}
+.swiper-container4 .swiper-pagination-bullet-active{
+	width: 10px;
+	height: 10px;
+}
+.swiper-container4 .swiper-pagination-bullet{
+	width: 10px;
+	height: 10px;
+}
