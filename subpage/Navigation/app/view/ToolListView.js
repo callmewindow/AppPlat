@@ -30,7 +30,7 @@ Ext.define('NavigationApp.view.ToolListView', {
             store: 'ToolListStore',
             tpl  : Ext.create('Ext.XTemplate',
                 '<tpl for=".">',
-                '<div class = toolList style="  margin-top: 7.5%; margin-left:14%">',
+                '<div class = "toolList" style="margin-top: 7.5%; margin-left:14%; cursor: pointer">',
                 '<table ><tr>',
                     '<td><img src="../../libs/ext/shared/icons/fam/{[values.id]}.png"/></td>' +
                     // id为标识，表示工具的内容

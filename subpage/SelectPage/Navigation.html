@@ -1,134 +1,154 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>ToolListApp</title>
     <script src="../../libs/ext/ext-all.js"></script>
-    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css"/>
-    <link rel="stylesheet" href="../../resources/css/selectpage-dataview.css"/>
+    <link rel="stylesheet" href="../../libs/ext/resources/css/ext-all.css" />
+    <link rel="stylesheet" href="../../resources/css/selectpage-dataview.css" />
     <script src="../../js/Global/AppPlatConstant.js"></script>
-    <script type="text/javascript" src="../../libs/ext/ext-lang-zh_CN.js"></script>
+    <script
+      type="text/javascript"
+      src="../../libs/ext/ext-lang-zh_CN.js"
+    ></script>
     <script type="text/javascript" src="app/NavigationApp.js"></script>
-    <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
     <!--采用新浪的接口获取用户的接口-->
+    <!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
     <script type="text/javascript">
-        function getValue(url, name) {
-            var reg = new RegExp('(\\?|&)' + name + '=([^&?]*)', 'i');
-            var arr = url.match(reg);
-            if (arr) {
-                return arr[2];
-            }
-            return null;
+      function getValue(url, name) {
+        var reg = new RegExp("(\\?|&)" + name + "=([^&?]*)", "i");
+        var arr = url.match(reg);
+        if (arr) {
+          return arr[2];
         }
-        var signature = getValue(window.location.href, 'signature');
-        var userId = getValue(window.location.href, 'userId');
-        var account = getValue(window.location.href, 'account');
-        var domain = getValue(window.location.href, 'domain');
-        var permission = getValue(window.location.href, 'permission');
-        var name = getValue(window.location.href, 'name');
-        var modelId = getValue(window.location.href, 'modelId');
-        var taskId = getValue(window.location.href, 'taskId');
+        return null;
+      }
 
-        sessionStorage.setItem('signature',signature);
-        sessionStorage.setItem('userId',userId);
-        sessionStorage.setItem('account',account);
-        sessionStorage.setItem('domain',domain);
-        sessionStorage.setItem('permission',permission);
-        sessionStorage.setItem('name',name);
-        // sessionStorage.setItem('userIp',returnCitySN["cip"]);
-        sessionStorage.setItem('modelId',modelId);
-        sessionStorage.setItem(APC.SELECTED_TASK_ID,taskId);
+      // 进行一些参数的填充，保证服务的使用
+      var signature = getValue(window.location.href, "signature");
+      var userId = getValue(window.location.href, "userId");
+      var account = getValue(window.location.href, "account");
+      var domain = getValue(window.location.href, "domain");
+      var permission = getValue(window.location.href, "permission");
+      var name = getValue(window.location.href, "name");
+      var modelId = getValue(window.location.href, "modelId");
+      var taskId = getValue(window.location.href, "taskId");
 
-        Ext.Ajax.request({
-            url:APC.APPPLAT_SERVICE_URL_PREFIX+"InterfaceManage/verifyDigitalSignature.json",
-            method: 'GET',
-            params: {
-                signature: signature,
-                userId: userId,
-                account: account,
-                domain: domain,
-                permission: permission,
-                name: name
-            },
-            success: function (response) {
-                //忽略数字签名验证结果代码（开发场景使用）
-                switch(modelId){
-                    case APC.MODEL_ID_ORBIT_DESIGN:
-                        // 卫星轨道交互设计工具
-                        window.location.href = "../../subpage/OrbitDesign/OrbitDesign.html"
-                        break;
-                    case APC.MODEL_ID_STRUCT_DESIGN:
-                        // 卫星结构与有效载荷布局工具
-                        window.location.href = "../../subpage/StructDesign/StructDesign.html"
-                        break;
-                    case APC.MODEL_ID_COVER_ANALYSIS:
-                        // 有效载荷观测区分析工具
-                        window.location.href = "../../subpage/CoverAnalysis/CoverAnalysis.html"
-                        break;
-                    case APC.MODEL_ID_DATA_TRANS_ANALYSIS:
-                        // 卫星数据传输分析工具
-                        window.location.href = "../../subpage/DataTransAnalysis/DataTransAnalysis.html"
-                        break;
-                    case APC.MODEL_ID_COLLABORATIVE_ARGUMENT:
-                        // 空间科学任务论证支持服务
-                        window.location.href = "../../subpage/CollaborativeArgumentation/ColArgumente.html"
-                        break;
-                    default:
-                        // 我的任务
-                        window.location.href = "../../subpage/Navigation/Navigation.html"
-                        break;
-                }
-// 数字签名验证使用代码（部署场景使用）
-//                var signatureResponse = Ext.JSON.decode(response.responseText);
-//                var isOk = signatureResponse.isOK  //布尔值，标识处理过程是否正常结束。
-//                var isValid = signatureResponse.isValid;//布尔值，数字签名是否有效。
-//                if (!isOk || !isValid) {
-//                    window.location.href = "../../subpage/LoginRemind/LoginRemind.html"
-//                }
-//                else{
-//                    if(modelId == null){
-//                        window.location.href = "../../subpage/Navigation/Navigation.html"
-//                    }else{
-//                        switch(modelId){
-//                            case APC.MODEL_ID_ORBIT_DESIGN:
-//                                window.location.href = "../../subpage/OrbitDesign/OrbitDesign.html"
-//                                break;
-//                            case APC.MODEL_ID_STRUCT_DESIGN:
-//                                window.location.href = "../../subpage/StructDesign/StructDesign.html"
-//                                break;
-//                            case APC.MODEL_ID_COVER_ANALYSIS:
-//                                window.location.href = "../../subpage/CoverAnalysis/CoverAnalysis.html"
-//                                break;
-//                            case APC.MODEL_ID_DATA_TRANS_ANALYSIS:
-//                                window.location.href = "../../subpage/DataTransAnalysis/DataTransAnalysis.html"
-//                                break;
-//                            case APC.MODEL_ID_COLLABORATIVE_ARGUMENT:
-//                                window.location.href = "../../subpage/CollaborativeArgumentation/ColArgumente.html"
-//                                break;
-//                            default:
-//                                window.location.href = "../../subpage/Navigation/Navigation.html"
-//                                break;
-//                        }
-//                    }
-//                }
-            },
-            failure:function(batch,options){
-                window.location.href = "../../subpage/LoginRemind/LoginRemind.html"
-            }
-        });
+      sessionStorage.setItem("signature", signature);
+      sessionStorage.setItem("userId", userId);
+      sessionStorage.setItem("account", account);
+      sessionStorage.setItem("domain", domain);
+      sessionStorage.setItem("permission", permission);
+      sessionStorage.setItem("name", name);
+      // sessionStorage.setItem('userIp',returnCitySN["cip"]);
+      sessionStorage.setItem("modelId", modelId);
+      sessionStorage.setItem(APC.SELECTED_TASK_ID, taskId);
 
-        window.onload = function () {
-            if (window.parent != window) {
-                var height = 600;
-                var data = {
-                    "command": "height",
-                    "value": height
-                };
-                window.parent.postMessage(JSON.stringify(data), '*');
-            }
+      // 默认前往工具选择页面
+      window.location.href = "../../subpage/Navigation/Navigation.html";
+
+      //   // 去除旧的统一认证内容，新的统一认证内容位于index.html
+      //   Ext.Ajax.request({
+      //     url:
+      //       APC.APPPLAT_SERVICE_URL_PREFIX +
+      //       "InterfaceManage/verifyDigitalSignature.json",
+      //     method: "GET",
+      //     params: {
+      //       signature: signature,
+      //       userId: userId,
+      //       account: account,
+      //       domain: domain,
+      //       permission: permission,
+      //       name: name,
+      //     },
+      //     success: function (response) {
+      //       //忽略数字签名验证结果代码（开发场景使用）
+      //       switch (modelId) {
+      //         case APC.MODEL_ID_ORBIT_DESIGN:
+      //           // 卫星轨道交互设计工具
+      //           window.location.href =
+      //             "../../subpage/OrbitDesign/OrbitDesign.html";
+      //           break;
+      //         case APC.MODEL_ID_STRUCT_DESIGN:
+      //           // 卫星结构与有效载荷布局工具
+      //           window.location.href =
+      //             "../../subpage/StructDesign/StructDesign.html";
+      //           break;
+      //         case APC.MODEL_ID_COVER_ANALYSIS:
+      //           // 有效载荷观测区分析工具
+      //           window.location.href =
+      //             "../../subpage/CoverAnalysis/CoverAnalysis.html";
+      //           break;
+      //         case APC.MODEL_ID_DATA_TRANS_ANALYSIS:
+      //           // 卫星数据传输分析工具
+      //           window.location.href =
+      //             "../../subpage/DataTransAnalysis/DataTransAnalysis.html";
+      //           break;
+      //         case APC.MODEL_ID_COLLABORATIVE_ARGUMENT:
+      //           // 空间科学任务论证支持服务
+      //           window.location.href =
+      //             "../../subpage/CollaborativeArgumentation/ColArgumente.html";
+      //           break;
+      //         default:
+      //           // 我的任务
+      //           window.location.href = "../../subpage/Navigation/Navigation.html";
+      //           break;
+      //       }
+      //       //   // 数字签名验证使用代码（部署场景使用）
+      //       //   var signatureResponse = Ext.JSON.decode(response.responseText);
+      //       //   var isOk = signatureResponse.isOK; //布尔值，标识处理过程是否正常结束。
+      //       //   var isValid = signatureResponse.isValid; //布尔值，数字签名是否有效。
+      //       //   if (!isOk || !isValid) {
+      //       //     window.location.href = "../../subpage/LoginRemind/LoginRemind.html";
+      //       //   } else {
+      //       //     if (modelId == null) {
+      //       //       window.location.href = "../../subpage/Navigation/Navigation.html";
+      //       //     } else {
+      //       //       switch (modelId) {
+      //       //         case APC.MODEL_ID_ORBIT_DESIGN:
+      //       //           window.location.href =
+      //       //             "../../subpage/OrbitDesign/OrbitDesign.html";
+      //       //           break;
+      //       //         case APC.MODEL_ID_STRUCT_DESIGN:
+      //       //           window.location.href =
+      //       //             "../../subpage/StructDesign/StructDesign.html";
+      //       //           break;
+      //       //         case APC.MODEL_ID_COVER_ANALYSIS:
+      //       //           window.location.href =
+      //       //             "../../subpage/CoverAnalysis/CoverAnalysis.html";
+      //       //           break;
+      //       //         case APC.MODEL_ID_DATA_TRANS_ANALYSIS:
+      //       //           window.location.href =
+      //       //             "../../subpage/DataTransAnalysis/DataTransAnalysis.html";
+      //       //           break;
+      //       //         case APC.MODEL_ID_COLLABORATIVE_ARGUMENT:
+      //       //           window.location.href =
+      //       //             "../../subpage/CollaborativeArgumentation/ColArgumente.html";
+      //       //           break;
+      //       //         default:
+      //       //           window.location.href =
+      //       //             "../../subpage/Navigation/Navigation.html";
+      //       //           break;
+      //       //       }
+      //       //     }
+      //       //   }
+      //     },
+      //     failure: function (batch, options) {
+      //       window.location.href = "../../subpage/LoginRemind/LoginRemind.html";
+      //     },
+      //   });
+
+      window.onload = function () {
+        if (window.parent != window) {
+          var height = 600;
+          var data = {
+            command: "height",
+            value: height,
+          };
+          window.parent.postMessage(JSON.stringify(data), "*");
         }
+      };
     </script>
-</head>
-<body>
-</body>
+  </head>
+  <body></body>
 </html>
