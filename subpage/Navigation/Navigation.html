@@ -56,7 +56,11 @@
     <script type="text/javascript">
         window.onload = function () {
             if (window.parent != window) {
-                var height = 600;
+                // 设定窗口高度
+                // 这里考虑到美观并为了赋予导航页面特殊性而给予了626的值
+                // 特殊性可见index.html，用于判断页面内容
+                // PS: 其实626也有不同的含义
+                var height = 626;
                 var data = {
                     "command": "height",
                     "value": height

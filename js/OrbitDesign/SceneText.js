@@ -78,7 +78,7 @@ function attachLegacyMarker( text, obj, size, visibleRange ){
 
     legacyMarkers.push( marker );
 
-    console.log(marker);
+    // console.log(marker);
 }
 function screenXY(object) {
     var worldPosition = object.position;

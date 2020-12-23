@@ -37,11 +37,11 @@
       <div class="nssdc_top">
         <div class="nssdc_top_main">
           <div class="nssdc_top_left">
-            <a href="#" id="logo_tit1">
+            <a href="https://escience.org.cn" target="_blank" id="logo_tit1">
               <img src="./template/img/toplogo.png" />
               国家科技资源共享服务平台
             </a>
-            <a href="#" id="logo_tit2" style="display: none">
+            <a href="http://www.nssdc.ac.cn/" id="logo_tit2" style="display: none">
               <img src="./template/img/logo-2-big.png" />
               国家空间科学数据中心
             </a>
@@ -62,7 +62,7 @@
               </div>
               <ul class="login_ul">
                 <li>
-                  <a href="#">
+                  <a href="http://www.nssdc.ac.cn/page.html#/htgl">
                     <img src="./template/img/manage.png" />
                     <span>管理后台</span>
                   </a>
@@ -76,15 +76,15 @@
               </ul>
             </div>
             <div class="language">
-              <a href="#">ENGLISH</a>
+              <a href="http://www.nssdc.ac.cn/eng">ENGLISH</a>
             </div>
             <div class="nssdc_top_right">
-              <a href="#"><span>我的访问</span></a>
-              <a href="#"><span>数据政策</span></a>
-              <a href="#"><span>典型服务</span></a>
-              <a href="#"><span>帮助中心</span></a>
-              <a href="#"><span>意见建议</span></a>
-              <a href="#"><span>关于我们</span></a>
+              <a v-show="logged" href="http://www.nssdc.ac.cn/mhsy/html/visit_mydata.html"><span>我的访问</span></a>
+              <a href="#" @click="building()"><span>数据政策</span></a>
+              <a href="http://www.nssdc.ac.cn/mhsy/html/service.html"><span>典型服务</span></a>
+              <a href="http://www.nssdc.ac.cn/mhsy/html/help.html"><span>帮助中心</span></a>
+              <a v-show="logged" href="http://www.nssdc.ac.cn/mhsy/html/visit_info.html"><span>意见建议</span></a>
+              <a href="http://www.nssdc.ac.cn/mhsy/html/aboutus_center.html"><span>关于我们</span></a>
             </div>
           </div>
         </div>
@@ -93,12 +93,12 @@
       <div class="nssdc_info">
         <img src="./template/img/topbg.png" class="topbg" />
         <div class="nssdc_info_main">
-          <a href="index.html"><img src="./template/img/logo.png" /></a>
+          <a href="http://www.nssdc.ac.cn/"><img src="./template/img/logo.png" /></a>
         </div>
       </div>
       <div class="nssdc_news_content">
         <div class="nssdc_menu_bar">
-          <a href="#"><img src="./template/img/home.png" /></a>
+          <a href="http://www.nssdc.ac.cn/"><img src="./template/img/home.png" /></a>
           <span>></span>
           <span>空间科学工程应用平台</span>
         </div>
@@ -109,7 +109,6 @@
               id="returnBtn"
               type="primary"
               size="small"
-              v-if="logged"
               @click="returnBack()"
             >
               返回上层应用
@@ -153,7 +152,7 @@
             <p>联系电话：010-52804246</p>
             <p>E-mail：nssdc_service@nssc.ac.cn</p>
             <p>
-              <a href="#">意见反馈</a>
+              <a v-show="logged" href="http://www.nssdc.ac.cn/mhsy/html/visit_info.html">意见反馈</a>
             </p>
           </div>
         </div>
@@ -164,6 +163,10 @@
   <style>
     #returnBtn {
       float: left;
+      margin-bottom: 10px;
+      display: none;
+      background-color: rgba(30, 107, 223, 0.795);
+      border-color: rgb(32, 111, 230);
     }
     /* #logoutBtn {
       float: right;
@@ -198,14 +201,19 @@
           let infoResult;
           try {
             jQuery.ajax({
-              url: "http://localhost/AppPlatService/cas/getLogInfo",
+              url: "http://ssmd.nssdc.ac.cn/AppPlatService/cas/getLogInfo",
               async: false,
               type: "get",
               success: function (data) {
                 infoResult = data;
               },
               error: function (data) {
-                Vue.prototype.$alert("统一认证信息接口出错，请稍后再试", "错误", {});
+                console.log(error)
+                Vue.prototype.$alert("统一认证信息接口出错，请稍后再试", "错误", {
+                  callback: action => {
+                    this.goHomePage();
+                  }
+                })
               },
             });
             // 在外部进行处理，让this指向vue对象
@@ -219,7 +227,11 @@
             }
           } catch (err) {
             console.log(err);
-            Vue.prototype.$alert("统一认证信息接口异常，请稍后再试", "异常", {});
+            Vue.prototype.$alert("统一认证信息接口异常，请稍后再试", "异常", {
+              callback: action => {
+                this.goHomePage();
+              }
+            });
           }
         },
         requestLogin() {
@@ -228,7 +240,7 @@
               showClose: false,
               closeOnClickModal: false,
               confirmButtonText: "前往统一认证",
-              cancelButtonText: "返回研究网络",
+              cancelButtonText: "返回",
               type: "warning",
             })
             .then(() => {
@@ -240,6 +252,10 @@
               this.goHomePage();
             });
         },
+        // 提醒资源不存在
+        building() {
+          alert("资源正在建设中......");
+        },
         // 返回上一层
         returnBack() {
           window.history.back();
@@ -247,12 +263,12 @@
         // 返回首页
         goHomePage() {
           // window.history.back();
-          window.location.href = "http://starnet.cssdc.ac.cn/";
+          window.location.href = "https://www.nssdc.ac.cn/mhsy/html/index.html";
         },
         // 登录cas
         loginCAS() {
           window.location.href =
-            "https://umt.nssdc.ac.cn/login?service=http://localhost/AppPlatService/cas/loginCAS";
+            "https://umt.nssdc.ac.cn/login?service=http://ssmd.nssdc.ac.cn/AppPlatService/cas/loginCAS";
         },
         /**
          * 注销cas
@@ -261,7 +277,7 @@
          */
         logoutCAS(loginFlag) {
           // console.log(loginFlag);
-          url = "http://localhost/AppPlatService/cas/logoutCAS";
+          url = "http://ssmd.nssdc.ac.cn/AppPlatService/cas/logoutCAS";
           jQuery.ajax({
             url:
               "https://umt.nssdc.ac.cn/logoutClient.do?loginFlag=" + loginFlag,
@@ -305,9 +321,9 @@
       var src4 =
         "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
       // 未登录时不显示工具内容
-        if(!globalLogged){
+      if( !globalLogged){
         document.getElementById("subPage").src = src0;
-      }else{
+      } else {
         // 加随机数，模拟用户的随机登陆
         var randomNumber = Math.random();
         if (randomNumber >= 0 && randomNumber < 0.33) {
@@ -345,6 +361,14 @@
       }
       var data = JSON.parse(event.data);
       // console.log(data);
+      // 控制返回按钮的隐藏与显示
+      if (data.value == 626 || data.value == 400){
+        // 如果是未登录提醒页面或者工具选择页面，则不显示
+        document.getElementById("returnBtn").style.display = "none";
+      } else{
+        // 如果是其他内容则显示
+        document.getElementById("returnBtn").style.display = "block";
+      }
       if (data.command == "height") {
         frameHeight = data.value + "px";
         document.getElementById("subPage").style.height = frameHeight;
@@ -362,7 +386,7 @@
         div.style.width = "1170px";
         div.style.height = frameHeight;
       } else {
-        Vue.prototype.$alert("错误的消息格式", "错误", {});
+        alert("发生异常错误，请稍后再试")
       }
     }
   </script>
@@ -403,4 +427,6 @@
     }
     //顶部logo切换结束
   </script>
+  <!-- 科学中心的探针服务，用于记录网站访问量 -->
+  <script src="http://www.nssdc.ac.cn/resources/assets/spv.js"></script>
 </html>

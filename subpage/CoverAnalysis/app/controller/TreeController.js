@@ -1032,7 +1032,7 @@ Ext.define('CoverAnalysisApp.controller.TreeController', {
                             AnalysisManagement.gsData[0].rootId = callbackJson.rootId;
                             AnalysisManagement.gsData[0].dataId = callbackJson.dataId;
                             me.getSolutionTree().getRootNode().setId(callbackJson.id);
-                            console.log(callbackJson.id);
+                            // console.log(callbackJson.id);
                             me.getSolutionTree().getRootNode().set("parentId", callbackJson.parentId);
                             me.getSolutionTree().getRootNode().set('rootId', callbackJson.rootId);
                             me.getSolutionTree().getRootNode().set('dataId', callbackJson.dataId);

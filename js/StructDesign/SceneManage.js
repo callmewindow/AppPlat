@@ -71,7 +71,7 @@ SceneManage.prototype = {
 
     //恢复初始视角
     initView: function(){
-        console.log(Struct.structures);
+        // console.log(Struct.structures);
         Struct.camera.position.set(0, 300, 600);
         Struct.camera.lookAt({x: 0, y: 0, z: 0 });
         Struct.light.position.addVectors(Struct.camera.position, new THREE.Vector3(0, 0, 0));

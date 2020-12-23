@@ -105,7 +105,8 @@ ORBIT.Orbit.prototype.makeOrbit = function(porbit, ptype, pcid, pname, flag) {
             finalPosition = nextPosition ;
 //            console.log("[" + nextPosition[0][0][0] + "," + nextPosition[0][0][1] + "," + nextPosition[0][0][2] + "," + nextPosition[1][0][0] + "," + nextPosition[1][0][1] + "," + nextPosition[1][0][2] + "],");
 //            console.log(nextPosition[0][0][0] + " " + nextPosition[0][0][1] + " " + nextPosition[0][0][2]);
-            geometry.vertices.push(vector3);//console.log(finalPosition[0][0]);
+            geometry.vertices.push(vector3);
+            //console.log(finalPosition[0][0]);
         }
         if(pname == ORBIT.selectOrbit){
             material = new THREE.LineBasicMaterial({color: 0xff7e00, opacity: 1});

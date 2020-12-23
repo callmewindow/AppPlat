@@ -180,7 +180,7 @@ Ext.define('DataTransAnalysisApp.controller.TreeController', {
                 } else {
                     jsonResult = response.responseText;
                 }
-                console.log(jsonResult);
+                // console.log(jsonResult);
 
                 for (i = 0; i < jsonResult.length; i++) {
                     me.taskNameArray.push(jsonResult[i].perTaskName);
@@ -872,7 +872,7 @@ Ext.define('DataTransAnalysisApp.controller.TreeController', {
                             AnalysisManagement.gsData[0].rootId = callbackJson.rootId;
                             AnalysisManagement.gsData[0].dataId = callbackJson.dataId;
                             me.getSolutionTree().getRootNode().setId(callbackJson.id);
-                            console.log(callbackJson.id);
+                            // console.log(callbackJson.id);
                             me.getSolutionTree().getRootNode().set("parentId", callbackJson.parentId);
                             me.getSolutionTree().getRootNode().set('rootId', callbackJson.rootId);
                             me.getSolutionTree().getRootNode().set('dataId', callbackJson.dataId);

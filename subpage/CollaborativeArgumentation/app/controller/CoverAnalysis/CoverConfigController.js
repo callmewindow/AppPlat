@@ -236,7 +236,7 @@ Ext.define('AppPlat.controller.CoverAnalysis.CoverConfigController', {
             return;
         }
         AnalysisManagement.gsData.push(data2);
-        console.log(AnalysisManagement.gsData);
+        // console.log(AnalysisManagement.gsData);
 
         var temporaryData1 = new Object();
         temporaryData1.data = AnalysisManagement.gsData;
@@ -466,8 +466,8 @@ Ext.define('AppPlat.controller.CoverAnalysis.CoverConfigController', {
                     var jsondata_str = JSON.stringify(jsondata);//console.log(jsondata_str);
                     var jsondata_table_str = JSON.stringify(jsondata_table);//console.log(jsondata_table_str);
                     // var exmaple = "[{\"ResourceId\":\"satellite0\",\"satellite\":\"COMW\",\"groundstation\":\"GSTATION\",\"X\":\"10218.754169\",\"Y\":\"-166.522423\",\"Z\":\"0.0\",\"VX\":\"2.859956\",\"VY\":\"5.362549\",\"VZ\":\"3.122562\",\"START-DATE\":\"2454283\",\"END-DATE\":\"2454284\",\"HB\":\"60\",\"DLAT\":\"0.0\",\"DLON\":\"2.859956\",\"ALT\":\"0\",\"HM\":\"5\"}]";
-                    console.log(jsondata_str);
-                    console.log(jsondata_table_str);
+                    // console.log(jsondata_str);
+                    // console.log(jsondata_table_str);
 
 
                     Ext.apply(
@@ -506,7 +506,7 @@ Ext.define('AppPlat.controller.CoverAnalysis.CoverConfigController', {
                                             me.loadDataForAnaysisTable();
                                         }
                                         else{
-                                            console.log(records);
+                                            // console.log(records);
                                             Ext.MessageBox.show({
                                                 title: "提示",
                                                 msg: "与计算服务断开！",
@@ -547,7 +547,7 @@ Ext.define('AppPlat.controller.CoverAnalysis.CoverConfigController', {
         var numberSecond = function(h, m, s) {
             return (h * 3600 + m * 60 + s)/86400;
         };
-        console.log(data);
+        // console.log(data);
         for(var i = 0 ; i < data.length; i++) {
             if(data[i].checktype !=null && data[i].checktype!=undefined){
                 if(data[i].checktype == "main-param"){
@@ -697,7 +697,8 @@ Ext.define('AppPlat.controller.CoverAnalysis.CoverConfigController', {
                             }
                         }
                     }
-                    var jsondata_str = JSON.stringify(jsondata);console.log(jsondata_str);
+                    var jsondata_str = JSON.stringify(jsondata);
+                    // console.log(jsondata_str);
 //                    if(jsondata_str.length > 8096){
 //                        Ext.MessageBox.show({
 //                            title: "提示",
@@ -745,7 +746,7 @@ Ext.define('AppPlat.controller.CoverAnalysis.CoverConfigController', {
                                     me.loadDataForAnaysisTable();
                                 }
                                 else{
-                                    console.log(records);
+                                    // console.log(records);
                                     Ext.MessageBox.show({
                                         title: "提示",
                                         msg: "与计算服务断开！",

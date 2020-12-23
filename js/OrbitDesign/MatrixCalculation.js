@@ -113,8 +113,10 @@ var matrixToAngle = function (M4){
     var end = new THREE.Vector3(min.x, min.y, min.z);
     start = new THREE.Vector3(1, 1, 1);
 
-    angle[0] = Math.acos((start.y * end.y + start.z * end.z) / Math.sqrt((Math.pow(start.y, 2) + Math.pow(start.z, 2)) * (Math.pow(end.y, 2) + Math.pow(end.z, 2))));console.log(start);console.log(end);
-    angle[1] = Math.acos((start.x * end.x + start.z * end.z) / Math.sqrt((Math.pow(start.x, 2) + Math.pow(start.z, 2)) * (Math.pow(end.x, 2) + Math.pow(end.z, 2))));console.log(start);console.log(end);
+    angle[0] = Math.acos((start.y * end.y + start.z * end.z) / Math.sqrt((Math.pow(start.y, 2) + Math.pow(start.z, 2)) * (Math.pow(end.y, 2) + Math.pow(end.z, 2))));
+    // console.log(start);console.log(end);
+    angle[1] = Math.acos((start.x * end.x + start.z * end.z) / Math.sqrt((Math.pow(start.x, 2) + Math.pow(start.z, 2)) * (Math.pow(end.x, 2) + Math.pow(end.z, 2))));
+    // console.log(start);console.log(end);
     angle[2] = Math.acos((start.x * end.x + start.y * end.y) / Math.sqrt((Math.pow(start.x, 2) + Math.pow(start.y, 2)) * (Math.pow(end.x, 2) + Math.pow(end.y, 2))));
 
     return angle;

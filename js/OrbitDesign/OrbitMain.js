@@ -555,7 +555,8 @@ var addPlanetOrbit = function(){
 };
 var addSatellite = function() {
     for(var i in ORBIT.satellite) {
-        ORBIT.scene.add(ORBIT.satellite[i].object);//console.log(ORBIT.satellite[i].object.id);
+        ORBIT.scene.add(ORBIT.satellite[i].object);
+        //console.log(ORBIT.satellite[i].object.id);
     }
 };
 
@@ -669,7 +670,8 @@ var removeOrbitSectionAxis = function(){
 var removeSatellite = function(sid) {
     if(sid == undefined) {
         for (var i in ORBIT.satellite) {
-            ORBIT.scene.remove(ORBIT.satellite[i].object);//console.log(ORBIT.satellite[i].object.id);
+            ORBIT.scene.remove(ORBIT.satellite[i].object);
+            //console.log(ORBIT.satellite[i].object.id);
             if(ORBIT.satellite[i].axis_orbit != null && ORBIT.satellite[i].axis_orbit != undefined)
                 ORBIT.scene.remove(ORBIT.satellite[i].axis_orbit.object);
         }

@@ -264,7 +264,8 @@ Ext.define('AppPlat.controller.OrbitDesign.GroundStationController', {
         sensorData.elevation = this.getSensorWindow().queryById("sensorElevation").getValue();
         sensorData.openangle = this.getSensorWindow().queryById("sensorOpenAngle").getValue();
         sensorData.bh = this.getSensorWindow().queryById("sensorBH").getValue();
-        sensorData.parentID = this.sensorobj.parentID;console.log("继承 parentID : "+this.sensorobj.parentID);
+        sensorData.parentID = this.sensorobj.parentID;
+        // console.log("继承 parentID : "+this.sensorobj.parentID);
         if(sensorData.endTime.getTime() > sensorData.startTime.getTime() + 86400000 * 30){
             console.log("步长自动修改为3600s");
             sensorData.bh = 3600;
