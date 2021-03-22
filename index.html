@@ -17,6 +17,8 @@
     <!-- vue所需的依赖 -->
     <!-- <script src="./js/Global/vue.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 引用后立刻关闭vue的开发环境警告 -->
+    <script>Vue.config.productionTip = false</script>
     <!-- 引入elementUI样式 -->
     <!-- <link rel="stylesheet" href="./resources/css/elementui-index.css" /> -->
     <link
@@ -140,8 +142,7 @@
               <span>邮编：100190</span>
             </p>
             <p>
-              <span>京ICP备05061203号-26</span>
-              <span>京公网安备110402500029号</span>
+              <a href="https://beian.miit.gov.cn" target="_blank"><span class="tempLink">京ICP备05061203号-25</span></a>
             </p>
             <p>技术支持：中国科学院计算机网络信息中心</p>
           </div>
@@ -181,6 +182,9 @@
       background-color: #c3c3c3;
       margin: 0 auto;
     } */
+    .tempLink:hover{
+      text-decoration: underline;
+    }
   </style>
   <!-- vue有关控制代码 -->
   <script type="text/javascript">
@@ -193,6 +197,9 @@
         username: "用户名获取失败",
         userInfo: {},
       },
+      // created() {
+      //   Vue.config.productionTip = false;
+      // },
       mounted() {
         this.checkLogin();
       },
@@ -226,7 +233,7 @@
               this.loginFlag = this.userInfo.loginFlag;
             }
           } catch (err) {
-            console.log(err);
+            // console.log(err);
             Vue.prototype.$alert("统一认证信息接口异常，请稍后再试", "异常", {
               callback: action => {
                 this.goHomePage();
@@ -314,28 +321,32 @@
       //            var src = "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=";
       //            src += randomString(24);
       //            src += "&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
+      // 取消随机用户登录，固定为聂一人
       var src1 =
         "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=111bbbe18cd23317f008f111&account=nie&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=聂殿辉";
-      var src3 =
-        "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=333bbbe18cd23317f008f333&account=du&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=杜鹏宇";
-      var src4 =
-        "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
+      // var src3 =
+      //   "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=333bbbe18cd23317f008f333&account=du&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=杜鹏宇";
+      // var src4 =
+      //   "subpage/SelectPage/Navigation.html?signature=534f92288cd2332140ee4281&userId=534bbbe18cd23317f008f0b8&account=zhang&domain=cloud.vsso.ac.cn&permission=10010#0011100#11001011&name=张明浩";
       // 未登录时不显示工具内容
-      if( !globalLogged){
+      if( !globalLogged ){
         document.getElementById("subPage").src = src0;
       } else {
         // 加随机数，模拟用户的随机登陆
         var randomNumber = Math.random();
-        if (randomNumber >= 0 && randomNumber < 0.33) {
+        // if (randomNumber >= 0 && randomNumber < 0.33) {
+        //   document.getElementById("subPage").src = src1;
+        // }
+        // //            else if(randomNumber >= 0.25 && randomNumber < 0.5){
+        // //                document.getElementById('subPage').src = src2;
+        // //            }
+        // else if (randomNumber >= 0.33 && randomNumber < 0.66) {
+        //   document.getElementById("subPage").src = src3;
+        // } else if (randomNumber >= 0.66 && randomNumber <= 1) {
+        //   document.getElementById("subPage").src = src4;
+        // }
+        if (randomNumber >=0 && randomNumber <= 1) {
           document.getElementById("subPage").src = src1;
-        }
-        //            else if(randomNumber >= 0.25 && randomNumber < 0.5){
-        //                document.getElementById('subPage').src = src2;
-        //            }
-        else if (randomNumber >= 0.33 && randomNumber < 0.66) {
-          document.getElementById("subPage").src = src3;
-        } else if (randomNumber >= 0.66 && randomNumber <= 1) {
-          document.getElementById("subPage").src = src4;
         }
       }
       // console.log(document.getElementById("subPage").src);
